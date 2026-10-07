@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zodiac Oracle · 12 signs, 12 questions</title>
+  <style>
+    /* ---------- DARK CELESTIAL PALETTE ---------- */
+    :root {
+      --bg: #0b0e1a;
+      --panel: #151b2b;
+      --panel-light: #1f2a3f;
+      --text: #e8ecf5;
+      --text-muted: #b0b8cc;
+      --accent: #b7a9ff;
+      --accent-glow: #8a7aff;
+      --border: #2e3a52;
+      --focus: #c5b9ff;
+      --star: rgba(255, 255, 240, 0.8);
+      --shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.8);
+      --radius: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ---------- SUBTLE STARFIELD (pseudo + radial) ---------- */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: 
+        radial-gradient(1px 1px at 10% 20%, var(--star) 1px, transparent 1px),
+        radial-gradient(1px 1px at 30% 70%, var(--star) 1px, transparent 1px),
+        radial-gradient(2px 2px at 80% 15%, rgba(255,255,240,0.9) 1px, transparent 1px),
+        radial-gradient(1px 1px at 55% 45%, var(--star) 1px, transparent 1px),
+        radial-gradient(2px 2px at 92% 78%, rgba(255,255,240,0.85) 1px, transparent 1px),
+        radial-gradient(1px 1px at 5% 90%, var(--star) 1px, transparent 1px),
+        radial-gradient(2px 2px at 45% 8%, rgba(255,255,240,0.9) 1px, transparent 1px),
+        radial-gradient(1px 1px at 72% 55%, var(--star) 1px, transparent 1px),
+        radial-gradient(1px 1px at 18% 42%, var(--star) 1px, transparent 1px),
+        radial-gradient(1.5px 1.5px at 96% 32%, rgba(255,255,240,0.9) 1px, transparent 1px);
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.7;
+    }
+
+    /* extra twinkle layer */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 20% 40%, rgba(138, 122, 255, 0.06) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 70%, rgba(183, 169, 255, 0.05) 0%, transparent 45%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .app {
+      position: relative;
+      z-index: 2;
+      background: var(--panel);
+      max-width: 720px;
+      width: 100%;
+      border-radius: var(--radius);
+      padding: 2rem 1.8rem;
+      box-shadow: var(--shadow), 0 0 0 1px var(--border) inset;
+      backdrop-filter: blur(4px);
+      transition: all 0.25s ease;
+      border: 1px solid #2a3550;
+    }
+
+    /* ---------- TYPOGRAPHY ---------- */
+    h1, h2 {
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .progress-wrap {
+      margin-bottom: 1.5rem;
+    }
+
+    .progress-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background: #1e2538;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #2b354c;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #8a7aff, #c5b9ff);
+      border-radius: 20px;
+      transition: width 0.35s cubic-bezier(0.2, 0.9, 0.3, 1);
+      box-shadow: 0 0 10px rgba(138, 122, 255, 0.5);
+    }
+
+    .question-text {
+      font-size: 1.6rem;
+      font-weight: 420;
+      margin: 0.8rem 0 1.8rem;
+      line-height: 1.3;
+      color: #f0f3ff;
+      text-wrap: balance;
+    }
+
+    @media (max-width: 500px) {
+      .question-text {
+        font-size: 1.35rem;
+      }
+    }
+
+    /* ---------- BUTTONS (ANSWERS) ---------- */
+    .answers {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .answer-btn {
+      background: var(--panel-light);
+      color: var(--text);
+      border: 1px solid #2f3b57;
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      font-size: 1rem;
+      line-height: 1.45;
+      text-align: left;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, transform 0.1s, box-shadow 0.2s;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      word-break: break-word;
+      width: 100%;
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      background: #25334c;
+      border-color: var(--accent);
+    }
+
+    .answer-btn:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+      border-color: var(--accent);
+      background: #25334c;
+    }
+
+    .answer-btn:active:not(:disabled) {
+      transform: scale(0.98);
+      background: #1c263b;
+    }
+
+    .answer-btn:disabled {
+      opacity: 0.5;
+      cursor: default;
+      filter: grayscale(0.3);
+    }
+
+    /* ---------- RESULT SCREEN ---------- */
+    .result-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: fadeSlide 0.5s ease;
+    }
+
+    .glyph {
+      font-size: 5.5rem;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+      filter: drop-shadow(0 0 16px rgba(183, 169, 255, 0.5));
+      font-weight: 300;
+    }
+
+    .sign-name {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: #fff;
+    }
+
+    .date-range {
+      color: var(--text-muted);
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.8rem;
+      border-bottom: 1px solid #2d3a55;
+      padding-bottom: 1.2rem;
+      width: 100%;
+    }
+
+    .verdict {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      color: #dde3f0;
+      text-wrap: pretty;
+    }
+
+    .trait-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.7rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .chip {
+      background: #1f2a44;
+      border: 1px solid #39496b;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+      color: #d0d9ff;
+      white-space: nowrap;
+    }
+
+    .match-line, .shadow-line {
+      font-size: 1rem;
+      margin: 0.5rem 0;
+      color: #cbd4e8;
+    }
+
+    .match-line strong, .shadow-line strong {
+      color: #efeaff;
+      font-weight: 500;
+    }
+
+    .shadow-line {
+      border-top: 1px dashed #2b3855;
+      padding-top: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      font-style: italic;
+      color: #b7c0d6;
+    }
+
+    .reset-btn {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 0.85rem 2.2rem;
+      border-radius: 40px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      letter-spacing: 0.03em;
+      margin-top: 0.5rem;
+    }
+
+    .reset-btn:hover {
+      background: var(--accent);
+      color: #0b0e1a;
+      box-shadow: 0 0 20px rgba(183, 169, 255, 0.4);
+    }
+
+    .reset-btn:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---------- ACCESSIBILITY / RESPONSIVE ---------- */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 400px) {
+      .app {
+        padding: 1.5rem 1.2rem;
+      }
+      .glyph {
+        font-size: 4.2rem;
+      }
+      .sign-name {
+        font-size: 2rem;
+      }
+      .question-text {
+        font-size: 1.25rem;
+      }
+      .answer-btn {
+        padding: 0.9rem 1rem;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="app" id="app">
+    <!-- Dynamic content: question or result -->
+    <div id="quiz-area" aria-live="polite" aria-atomic="false">
+      <!-- filled by JS -->
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      'use strict';
+
+      // ============================================================
+      // 1. SIGNS OBJECT — all 12 signs with metadata and secondary weights
+      // ============================================================
+      const SIGNS = {
+        aries: { name: 'Aries', glyph: '♈', dates: 'Mar 21 – Apr 19', intensity: 3 },
+        taurus: { name: 'Taurus', glyph: '♉', dates: 'Apr 20 – May 20', intensity: 1 },
+        gemini: { name: 'Gemini', glyph: '♊', dates: 'May 21 – Jun 20', intensity: 2 },
+        cancer: { name: 'Cancer', glyph: '♋', dates: 'Jun 21 – Jul 22', intensity: 1 },
+        leo: { name: 'Leo', glyph: '♌', dates: 'Jul 23 – Aug 22', intensity: 3 },
+        virgo: { name: 'Virgo', glyph: '♍', dates: 'Aug 23 – Sep 22', intensity: 2 },
+        libra: { name: 'Libra', glyph: '♎', dates: 'Sep 23 – Oct 22', intensity: 1 },
+        scorpio: { name: 'Scorpio', glyph: '♏', dates: 'Oct 23 – Nov 21', intensity: 3 },
+        sagittarius: { name: 'Sagittarius', glyph: '♐', dates: 'Nov 22 – Dec 21', intensity: 2 },
+        capricorn: { name: 'Capricorn', glyph: '♑', dates: 'Dec 22 – Jan 19', intensity: 3 },
+        aquarius: { name: 'Aquarius', glyph: '♒', dates: 'Jan 20 – Feb 18', intensity: 2 },
+        pisces: { name: 'Pisces', glyph: '♓', dates: 'Feb 19 – Mar 20', intensity: 1 }
+      };
+
+      // ============================================================
+      // 2. QUESTIONS ARRAY — 12 questions, 4 options each.
+      //    Each option: text, primary sign, secondary (tie-break) sign.
+      //    Hidden weights, no visible points.
+      // ============================================================
+      const QUESTIONS = [
+        {
+          text: "You're at a party and someone says, 'I just don't get astrology.' You…",
+          options: [
+            { text: "You launch into a detailed story about your ex who was a Gemini sun, Virgo moon, and absolutely ruined Tuesdays for you.", primary: 'gemini', secondary: 'virgo' },
+            { text: "You nod slowly, then quietly rearrange the snack table so the chips are perfectly aligned with the dip. It's not about them.", primary: 'virgo', secondary: 'capricorn' },
+            { text: "You say 'fair enough' and immediately forget they exist. There are three other conversations you could be having.", primary: 'aquarius', secondary: 'sagittarius' },
+            { text: "You feel a sudden urge to defend the entire concept with a personal anecdote that's 90% dramatic pause and 10% actual point.", primary: 'leo', secondary: 'aries' }
+          ]
+        },
+        {
+          text: "Pick your crime. You've decided to commit exactly one minor offense today.",
+          options: [
+            { text: "You steal a single grape from the supermarket, eat it in the parking lot, and feel a thrill that sustains you for a week.", primary: 'taurus', secondary: 'cancer' },
+            { text: "You tell your friend you loved their short story when you actually skimmed it. But you did skim it. Twice.", primary: 'libra', secondary: 'pisces' },
+            { text: "You illegally download a textbook you'll never read because knowledge should be free and also you like the chaos.", primary: 'sagittarius', secondary: 'aquarius' },
+            { text: "You cut someone off in traffic, then spend the next 45 minutes constructing an elaborate internal defense of your actions.", primary: 'aries', secondary: 'scorpio' }
+          ]
+        },
+        {
+          text: "It's 2:07 a.m. You're texting someone. The message is…",
+          options: [
+            { text: "'I'm not saying I'm a genius but I just rearranged my entire bookshelf by color and emotional weight.'", primary: 'libra', secondary: 'leo' },
+            { text: "'Do you ever think about how octopuses have three hearts and we only have one and that feels unfair?'", primary: 'aquarius', secondary: 'gemini' },
+            { text: "'I'm fine. I'm just thinking about that thing you said in 2019. Anyway. Goodnight.'", primary: 'cancer', secondary: 'scorpio' },
+            { text: "'I just wrote 4,000 words of a story I'll never finish. It's about a lighthouse. I'm not okay.'", primary: 'pisces', secondary: 'virgo' }
+          ]
+        },
+        {
+          text: "You're in an elevator. The doors open on the wrong floor. A stranger steps in and says, 'This isn't my floor.' You…",
+          options: [
+            { text: "Say 'Same' and press the close button. You are not responsible for their journey.", primary: 'capricorn', secondary: 'virgo' },
+            { text: "Give them detailed directions to the correct floor, then worry for the rest of the day that you were somehow unclear.", primary: 'cancer', secondary: 'libra' },
+            { text: "Make a joke about being trapped in a liminal space together. They don't laugh. You keep the bit going anyway.", primary: 'gemini', secondary: 'sagittarius' },
+            { text: "Stare at them with the intensity of someone who has seen this exact scenario in a dream and knows how it ends.", primary: 'scorpio', secondary: 'pisces' }
+          ]
+        },
+        {
+          text: "You're filling out a form that asks: 'What is your greatest weakness?' Your honest answer is…",
+          options: [
+            { text: "You sometimes get so focused on optimizing a system that you forget to eat, sleep, or acknowledge other humans.", primary: 'capricorn', secondary: 'virgo' },
+            { text: "You'll agree to plans you don't want to attend because the alternative is the crushing weight of potential disappointment.", primary: 'libra', secondary: 'pisces' },
+            { text: "You have a habit of disappearing for three days and then reappearing with a new hobby and no explanation.", primary: 'sagittarius', secondary: 'aquarius' },
+            { text: "You occasionally rewrite conversations in your head until you're the villain, then apologize for things that never happened.", primary: 'pisces', secondary: 'cancer' }
+          ]
+        },
+        {
+          text: "You find a wallet on the sidewalk. Inside: $50, a photo of a dog, and a receipt for a single banana. You…",
+          options: [
+            { text: "Return it to the address on the ID. You also leave a note complimenting the dog and asking if the banana was a good one.", primary: 'cancer', secondary: 'leo' },
+            { text: "Take the cash, donate it to an animal shelter, and mail the wallet back with a typed explanation of your ethical framework.", primary: 'aquarius', secondary: 'sagittarius' },
+            { text: "Keep the wallet but spend 20 minutes feeling guilty, then 20 minutes justifying it, then 20 minutes thinking about the dog.", primary: 'gemini', secondary: 'libra' },
+            { text: "You track down the owner just to ask why they bought exactly one banana. You need to know.", primary: 'scorpio', secondary: 'virgo' }
+          ]
+        },
+        {
+          text: "A friend asks you to describe your ideal weekend. You say…",
+          options: [
+            { text: "'A cabin. No Wi-Fi. A stack of books. One (1) person I tolerate. Maybe a fire.'", primary: 'taurus', secondary: 'capricorn' },
+            { text: "'I wake up at 6 a.m., hike a mountain, brunch, then accidentally start a side project that becomes my whole personality.'", primary: 'aries', secondary: 'leo' },
+            { text: "'I say yes to every invitation, double-book myself, and thrive in the chaos. Sunday night I will regret this.'", primary: 'gemini', secondary: 'sagittarius' },
+            { text: "'I spend the entire weekend perfecting a playlist that only I will ever hear. It has a narrative arc.'", primary: 'pisces', secondary: 'aquarius' }
+          ]
+        },
+        {
+          text: "You're in a group project. The deadline is tomorrow. You…",
+          options: [
+            { text: "Have already finished your part, plus a backup version, plus a folder of citations nobody asked for.", primary: 'virgo', secondary: 'capricorn' },
+            { text: "Take charge, assign roles, and gently but firmly become the leader everyone secretly needed.", primary: 'leo', secondary: 'aries' },
+            { text: "Offer to do the presentation because you're the only one who can be trusted to make eye contact with the audience.", primary: 'scorpio', secondary: 'leo' },
+            { text: "Ask everyone how they're feeling about the project and accidentally start a group therapy session.", primary: 'pisces', secondary: 'cancer' }
+          ]
+        },
+        {
+          text: "You're at a restaurant. The waiter brings the wrong order. You…",
+          options: [
+            { text: "Eat it anyway. It's food. You're not going to make a thing of it. But you will think about it for three years.", primary: 'taurus', secondary: 'cancer' },
+            { text: "Politely point it out, then apologize for pointing it out, then apologize for apologizing.", primary: 'libra', secondary: 'pisces' },
+            { text: "Send it back with a detailed explanation of why it's wrong and what you actually wanted. You're not rude, you're precise.", primary: 'virgo', secondary: 'capricorn' },
+            { text: "Eat it, but spend the rest of the meal composing a Yelp review in your head that you'll never post.", primary: 'scorpio', secondary: 'cancer' }
+          ]
+        },
+        {
+          text: "You're asked to describe your relationship with rules. You say…",
+          options: [
+            { text: "'I follow them. But I also know exactly which ones are negotiable and when. I keep a mental list.'", primary: 'capricorn', secondary: 'scorpio' },
+            { text: "'Rules are suggestions. Very strong suggestions. That I ignore when they're boring.'", primary: 'sagittarius', secondary: 'aries' },
+            { text: "'I follow the spirit, not the letter. And I will argue about the difference for hours.'", primary: 'aquarius', secondary: 'gemini' },
+            { text: "'I follow them so precisely that I sometimes create new ones by accident. It's a gift.'", primary: 'virgo', secondary: 'taurus' }
+          ]
+        },
+        {
+          text: "You're at a museum. A painting moves you to tears. You…",
+          options: [
+            { text: "Stand there silently, let the feeling wash over you, and then buy a postcard you'll never send.", primary: 'pisces', secondary: 'cancer' },
+            { text: "Take a photo, post it, and write a caption so raw that three people DM you asking if you're okay.", primary: 'leo', secondary: 'gemini' },
+            { text: "Read every placard, then Google the artist's entire life story, then form a strong opinion about their third period.", primary: 'virgo', secondary: 'aquarius' },
+            { text: "Feel it deeply, then immediately start planning your own creative project that you'll abandon by Thursday.", primary: 'aries', secondary: 'sagittarius' }
+          ]
+        },
+        {
+          text: "You're asked: 'What do you bring to a friendship?' Your most honest answer is…",
+          options: [
+            { text: "'I remember everything you've ever told me. Everything. Including that thing you said in 2017. Yes, that thing.'", primary: 'scorpio', secondary: 'cancer' },
+            { text: "'I will show up. On time. With snacks. And a plan. And a backup plan for the plan.'", primary: 'taurus', secondary: 'capricorn' },
+            { text: "'I will make you laugh until you forget your problems, then send you a meme at 3 a.m. just
