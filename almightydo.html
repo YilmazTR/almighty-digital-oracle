@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Almighty Digital Oracle</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230a0714'/%3E%3Cg fill='%23c9a6ff'%3E%3Ccircle cx='16' cy='20' r='2.5'/%3E%3Ccircle cx='32' cy='14' r='2.5'/%3E%3Ccircle cx='48' cy='20' r='2.5'/%3E%3Ccircle cx='14' cy='36' r='2.5'/%3E%3Ccircle cx='50' cy='36' r='2.5'/%3E%3Ccircle cx='20' cy='50' r='2.5'/%3E%3Ccircle cx='44' cy='50' r='2.5'/%3E%3Cpath d='M32 24 L40 32 L32 40 L24 32 Z' fill='%23e0ccff'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#fafafa;
+    --panel:#ffffff;
+    --ink:#1d1d1f;
+    --ink-soft:#424245;
+    --dim:#6e6e73;
+    --line:#d2d2d7;
+    --line-soft:#e8e8ed;
+    --accent:#0071e3;
+    --accent-soft:#f0f7ff;
+    --success:#1a8c4a;
+    --shadow:0 4px 24px rgba(0,0,0,.06);
+    --radius:18px;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; min-height:100vh;
+    font-family:var(--font);
+    background:var(--bg);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    display:flex; align-items:center; justify-content:center;
+    padding:32px 18px;
+  }
+  .wrap{width:100%; max-width:720px; position:relative}
+
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px;
+    margin-bottom:18px;
+    padding:0 6px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-size:14px; font-weight:500; color:var(--dim);
+    letter-spacing:-.01em;
+  }
+  .brand .oracle-icon{width:24px; height:24px; flex:0 0 auto}
+  .lang-toggle{
+    display:inline-flex;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:2px;
+    box-shadow:0 1px 3px rgba(0,0,0,.04);
+  }
+  .lang-toggle button{
+    font:inherit;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:-.01em;
+    border:0;
+    background:transparent;
+    color:var(--dim);
+    padding:6px 14px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:background .18s ease,color .18s ease;
+  }
+  .lang-toggle button[aria-pressed="true"]{
+    background:var(--ink);
+    color:#fff;
+  }
+  .lang-toggle button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
+
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line-soft);
+    border-radius:var(--radius);
+    padding:40px 38px 44px;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+  }
+
+  .hero{
+    display:flex; align-items:center; gap:14px;
+    margin:0 0 6px;
+  }
+  .hero .hero-icon{width:42px; height:42px; flex:0 0 auto}
+  .title{
+    font-size:clamp(1.6rem, 3.4vw, 2.2rem);
+    font-weight:600;
+    letter-spacing:-.025em;
+    line-height:1.15;
+    margin:0;
+    color:var(--ink);
+  }
+  .subtitle{
+    font-size:15px;
+    color:var(--dim);
+    margin:6px 0 28px;
+    letter-spacing:-.01em;
+  }
+
+  .section-tag{
+    display:inline-block;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+    background:var(--accent-soft);
+    padding:4px 10px;
+    border-radius:999px;
+    margin-bottom:14px;
+  }
+
+  .progress-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:12px;
+    color:var(--dim);
+    letter-spacing:.02em;
+    margin-bottom:8px;
+    font-variant-numeric:tabular-nums;
+  }
+  .bar{
+    height:4px;
+    background:var(--line-soft);
+    border-radius:99px;
+    overflow:hidden;
+    margin-bottom:26px;
+  }
+  .bar > i{
+    display:block;
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,#0071e3,#5e5ce6);
+    border-radius:99px;
+    transition:width .5s cubic-bezier(.4,0,.2,1);
+  }
+
+  .q{
+    font-size:clamp(1.15rem, 2.1vw, 1.35rem);
+    font-weight:500;
+    letter-spacing:-.015em;
+    line-height:1.4;
+    margin:0 0 22px;
+    color:var(--ink);
+  }
+  .opts{display:grid; gap:10px}
+  button.opt{
+    text-align:left;
+    font:inherit;
+    font-size:15px;
+    font-weight:400;
+    color:var(--ink);
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:15px 18px;
+    cursor:pointer;
+    transition:border-color .18s ease, background .18s ease, transform .12s ease;
+    width:100%;
+    letter-spacing:-.01em;
+    line-height:1.45;
+  }
+  button.opt:hover:not(:disabled){
+    border-color:var(--accent);
+    background:var(--accent-soft);
+  }
+  button.opt:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+    border-color:var(--accent);
+  }
+  button.opt:active:not(:disabled){transform:scale(.995)}
+  button.opt:disabled{opacity:.4; cursor:default}
+
+  .thinking{
+    margin-top:24px;
+    padding:14px 16px;
+    background:#f5f5f7;
+    border-radius:12px;
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.5;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    letter-spacing:-.005em;
+    min-height:44px;
+  }
+  .thinking .pulse{
+    flex:0 0 auto;
+    width:8px; height:8px; border-radius:50%;
+    background:var(--accent);
+    margin-top:6px;
+    animation:pulse 1.6s ease-in-out infinite;
+  }
+  .thinking .pulse.done{
+    background:var(--success);
+    animation:none;
+  }
+  .thinking .txt b{color:var(--ink); font-weight:600}
+  @keyframes pulse{
+    0%,100%{opacity:.35; transform:scale(.9)}
+    50%{opacity:1; transform:scale(1.15)}
+  }
+
+  .result{animation:fade .5s ease both}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .zodiac-block{
+    padding:22px 0 24px;
+    border-bottom:1px solid var(--line-soft);
+    margin-bottom:24px;
+  }
+  .glyph{
+    font-size:56px; line-height:1;
+    margin-bottom:6px;
+    background:linear-gradient(135deg,#0071e3,#5e5ce6);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:transparent;
+  }
+  .sign-name{
+    font-size:clamp(1.8rem,4.5vw,2.5rem);
+    font-weight:600;
+    letter-spacing:-.03em;
+    margin:0 0 4px;
+    color:var(--ink);
+  }
+  .dates{
+    font-size:13px;
+    letter-spacing:.04em;
+    color:var(--dim);
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .verdict{
+    font-size:15.5px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    letter-spacing:-.01em;
+    margin:0 0 18px;
+  }
+  .traits{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px}
+  .chip{
+    font-size:12px;
+    font-weight:500;
+    padding:6px 12px;
+    border-radius:999px;
+    background:#f5f5f7;
+    color:var(--ink-soft);
+    letter-spacing:-.005em;
+  }
+  .meta-line{
+    font-size:13.5px;
+    line-height:1.55;
+    color:var(--dim);
+    letter-spacing:-.005em;
+    margin:6px 0 0;
+  }
+  .meta-line b{color:var(--ink); font-weight:600}
+
+  .mbti-block{
+    padding:4px 0 8px;
+  }
+  .mbti-label{
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:10px;
+  }
+  .mbti-type{
+    font-size:clamp(1.9rem,5vw,2.6rem);
+    font-weight:600;
+    letter-spacing:-.02em;
+    margin:0 0 2px;
+    color:var(--ink);
+    font-variant-numeric:tabular-nums;
+  }
+  .mbti-name{
+    font-size:15px;
+    color:var(--ink-soft);
+    font-weight:500;
+    margin:0 0 16px;
+    letter-spacing:-.01em;
+  }
+  .mbti-axes{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:8px 18px;
+    margin:0 0 18px;
+    font-size:13px;
+    color:var(--dim);
+  }
+  .mbti-axes .row{display:flex; justify-content:space-between; gap:10px}
+  .mbti-axes .row span:last-child{color:var(--ink); font-weight:500}
+  .mbti-desc{
+    font-size:15.5px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    letter-spacing:-.01em;
+    margin:0 0 14px;
+  }
+  .bridge{
+    margin-top:22px;
+    padding:16px 18px;
+    background:#f5f5f7;
+    border-radius:12px;
+    font-size:14px;
+    line-height:1.55;
+    color:var(--ink-soft);
+    letter-spacing:-.005em;
+  }
+  .bridge b{color:var(--ink); font-weight:600}
+  .disclaimer{
+    margin-top:16px;
+    font-size:11.5px;
+    line-height:1.5;
+    color:var(--dim);
+    letter-spacing:.005em;
+  }
+
+  .cta{
+    font:inherit;
+    font-size:15px;
+    font-weight:500;
+    cursor:pointer;
+    margin-top:24px;
+    background:var(--accent);
+    color:#fff;
+    border:0;
+    border-radius:999px;
+    padding:12px 26px;
+    letter-spacing:-.01em;
+    transition:background .18s ease, transform .12s ease;
+  }
+  .cta:hover{background:#0077ed}
+  .cta:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+  .cta:active{transform:scale(.98)}
+
+  .footer{
+    margin-top:14px;
+    text-align:right;
+    font-size:12px;
+    color:var(--dim);
+    letter-spacing:.01em;
+    padding:0 6px;
+  }
+
+  @media (max-width:520px){
+    .card{padding:30px 22px 34px}
+    .topbar{flex-wrap:wrap}
+    button.opt{font-size:14.5px; padding:14px 16px}
+    .mbti-axes{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <svg class="oracle-icon" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="#0a0714"/>
+        <g fill="#c9a6ff">
+          <circle cx="16" cy="20" r="2.5"/>
+          <circle cx="32" cy="14" r="2.5"/>
+          <circle cx="48" cy="20" r="2.5"/>
+          <circle cx="14" cy="36" r="2.5"/>
+          <circle cx="50" cy="36" r="2.5"/>
+          <circle cx="20" cy="50" r="2.5"/>
+          <circle cx="44" cy="50" r="2.5"/>
+          <path d="M32 24 L40 32 L32 40 L24 32 Z" fill="#e0ccff"/>
+        </g>
+      </svg>
+      <span id="brand-text">Almighty Digital Oracle</span>
+    </div>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" id="lang-en" aria-pressed="true">EN</button>
+      <button type="button" id="lang-tr" aria-pressed="false">TR</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="hero">
+      <svg class="hero-icon" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="#0a0714"/>
+        <g fill="#c9a6ff">
+          <circle cx="16" cy="20" r="2.5"/>
+          <circle cx="32" cy="14" r="2.5"/>
+          <circle cx="48" cy="20" r="2.5"/>
+          <circle cx="14" cy="36" r="2.5"/>
+          <circle cx="50" cy="36" r="2.5"/>
+          <circle cx="20" cy="50" r="2.5"/>
+          <circle cx="44" cy="50" r="2.5"/>
+          <path d="M32 24 L40 32 L32 40 L24 32 Z" fill="#e0ccff"/>
+        </g>
+      </svg>
+      <h1 class="title" id="app-title">Almighty Digital Oracle</h1>
+    </div>
+    <p class="subtitle" id="app-subtitle">Forty-six questions. Zodiac sign + personality type. No birthday required.</p>
+
+    <div class="progress-row" id="progress-row" hidden>
+      <span id="progress-label">Question 1 of 46</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="bar" id="bar-wrap" hidden role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Quiz progress">
+      <i id="bar-fill" style="width:0%"></i>
+    </div>
+
+    <div id="content" aria-live="polite" aria-atomic="false"></div>
+
+    <div class="thinking" id="thinking" hidden>
+      <span class="pulse" id="pulse"></span>
+      <span class="txt" id="thinking-text"></span>
+    </div>
+  </div>
+
+  <div class="footer">© Yilmaz</div>
+</div>
+
+<script>
+/* ============================================================
+   I18N
+   ============================================================ */
+const I18N = {
+  en: {
+    brand: "Almighty Digital Oracle",
+    title: "Almighty Digital Oracle",
+    subtitle: "Forty-six questions. Zodiac sign + personality type. No birthday required.",
+    sectionIntake: "About you",
+    sectionZodiac: "The vibe check",
+    sectionMbti: "Mind & decisions",
+    question: "Question",
+    of: "of",
+    thinkingPrefix: "Leading so far:",
+    thinkingEmpty: "Reading your signals…",
+    thinkingDone: "Reading complete.",
+    startOver: "Start over",
+    bestMatch: "Best match",
+    shadowSide: "Your shadow side",
+    zodiacLabel: "Your zodiac sign",
+    mbtiLabel: "Your personality type",
+    axesE: "Extraverted", axesI: "Introverted",
+    axesS: "Observant", axesN: "Intuitive",
+    axesT: "Thinking", axesF: "Feeling",
+    axesJ: "Judging", axesP: "Prospecting",
+    disclaimer: "Personality type is an estimate based on the public-domain four-dichotomy framework. Not affiliated with any commercial test provider.",
+    bridgePrefix: "How they interact:"
+  },
+  tr: {
+    brand: "Yüce Dijital Kâhin",
+    title: "Yüce Dijital Kâhin",
+    subtitle: "Kırk altı soru. Burç + kişilik tipi. Doğum günü gerekmez.",
+    sectionIntake: "Sizin hakkınızda",
+    sectionZodiac: "His kontrolü",
+    sectionMbti: "Zihin ve kararlar",
+    question: "Soru",
+    of: "/",
+    thinkingPrefix: "Şu an önde:",
+    thinkingEmpty: "Sinyallerin okunuyor…",
+    thinkingDone: "Okuma tamamlandı.",
+    startOver: "Baştan başla",
+    bestMatch: "En iyi eşleşme",
+    shadowSide: "Gölge yönünüz",
+    zodiacLabel: "Burcunuz",
+    mbtiLabel: "Kişilik tipiniz",
+    axesE: "Dışa dönük", axesI: "İçe dönük",
+    axesS: "Gözlemci", axesN: "Sezgisel",
+    axesT: "Düşünen", axesF: "Hisseden",
+    axesJ: "Yargılayıcı", axesP: "Keşfedici",
+    disclaimer: "Kişilik tipi, kamuya açık dört ikilem çerçevesine dayanan bir tahmindir. Hiçbir ticari test sağlayıcısıyla bağlantılı değildir.",
+    bridgePrefix: "Nasıl etkileşirler:"
+  }
+};
+
+/* ============================================================
+   ZODIAC SIGNS — bilingual (same as previous version)
+   ============================================================ */
+const SIGNS = {
+  aries:{name:{en:"Aries",tr:"Koç"},glyph:"♈",dates:{en:"Mar 21 – Apr 19",tr:"21 Mar – 19 Nis"},traits:{en:["Impulsive","Brave","Terrible at queues"],tr:["Dürtüsel","Cesur","Sıra bekleyemez"]},verdict:{en:"You are a golden retriever in human form who has never once read the room before charging into it. Your spirit animal is the shopping cart with one broken wheel: unstoppable, slightly dangerous, occasionally airborne. You've started three hobbies this week and abandoned two of them before lunch.",tr:"İnsan formuna bürünmüş bir golden retriever'sınız ve odayı okumadan içine dalmayı bir kez olsun akıl etmediniz. Ruh hayvanınız tek tekerleği kırık bir alışveriş arabası: durdurulamaz, biraz tehlikeli, ara sıra havada. Bu hafta üç hobiye başladınız, ikisini öğle yemeğinden önce bıraktınız."},match:{en:"Sagittarius (co-conspirators) or Leo (mutual hype squad)",tr:"Yay (suç ortakları) ya da Aslan (karşılıklı moral ekibi)"},shadow:{en:"Your shadow side treats patience like a personal insult.",tr:"Gölge yönünüz sabrı kişisel bir hakaret gibi görüyor."}},
+  taurus:{name:{en:"Taurus",tr:"Boğa"},glyph:"♉",dates:{en:"Apr 20 – May 20",tr:"20 Nis – 20 May"},traits:{en:["Loyal","Deliciously stubborn","Ruthless about snacks"],tr:["Sadık","Tatlı bir inatçı","Atıştırmalıkta acımasız"]},verdict:{en:"You have the emotional volatility of a very comfortable armchair, and honestly? Respect. You will forgive almost anything except someone eating the last of something without asking. Your love language is feeding people and quietly judging their life choices while doing it.",tr:"Duygusal dalgalanmanız son derece rahat bir koltuk kadar. Dürüst olmak gerekirse? Saygı duyuyorum. Neredeyse her şeyi affedersiniz; birinin sormadan son lokmayı yemesini asla. Sevgi diliniz insanları doyurmak ve bunu yaparken hayat seçimlerini sessizce yargılamak."},match:{en:"Virgo (shared standards) or Cancer (soft landing)",tr:"Başak (ortak standartlar) ya da Yengeç (yumuşak iniş)"},shadow:{en:"Your shadow side calls it 'consistency' when it's really a drawbridge.",tr:"Gölge yönünüz buna 'istikrar' diyor, oysa aslında bir asma köprü."}},
+  gemini:{name:{en:"Gemini",tr:"İkizler"},glyph:"♊",dates:{en:"May 21 – Jun 20",tr:"21 May – 20 Haz"},traits:{en:["Quick-witted","Chaotic","Three tabs deep"],tr:["Hazırcevap","Kaotik","Üç sekme derin"]},verdict:{en:"You contain multitudes, most of which contradict each other before breakfast. You've had six personalities today and none of them signed a waiver. Your attention span is a browser with 47 tabs open, one playing music you cannot locate, and you refuse to close any of them.",tr:"İçinizde çokluklar barındırıyorsunuz; çoğu kahvaltıdan önce birbirleriyle çelişiyor. Bugün altı farklı kişilik oldunuz ve hiçbiri sorumluluk sözleşmesi imzalamadı. Dikkat süreniz 47 sekmesi açık bir tarayıcı; biri yerini bulamadığınız bir müzik çalıyor ve hiçbirini kapatmayı reddediyorsunuz."},match:{en:"Libra (banter partners) or Aquarius (nobody bats an eye)",tr:"Terazi (atışma ortağı) ya da Kova (kimse yadırgamaz)"},shadow:{en:"Your shadow side RSVPs yes and then sends a hologram.",tr:"Gölge yönünüz 'evet' der, sonra yerine bir hologram gönderir."}},
+  cancer:{name:{en:"Cancer",tr:"Yengeç"},glyph:"♋",dates:{en:"Jun 21 – Jul 22",tr:"21 Haz – 22 Tem"},traits:{en:["Fiercely loyal","Emotional archive","Soft shell"],tr:["Fena sadık","Duygusal arşiv","Yumuşak kabuk"]},verdict:{en:"You are a crab wearing a cardigan: soft inside, armored outside, and willing to pinch anyone who upsets your people. You remember what someone said to you in 2014, in a hallway, and yes, you have thought about it this week. Group chats fear your screenshot habit.",tr:"Hırka giymiş bir yengeçsiniz: içi yumuşak, dışı zırhlı ve sevdiklerinizi üzen herkesi çimdiklemeye hazır. Birinin 2014'te bir koridorda size söylediğini hatırlıyorsunuz ve evet, bu hafta onu düşündünüz. Grup sohbetleri ekran görüntüsü alışkanlığınızdan korkuyor."},match:{en:"Pisces (feelings understood) or Taurus (someone to fold the laundry)",tr:"Balık (duygular anlaşılır) ya da Boğa (çamaşırı katlayacak biri)"},shadow:{en:"Your shadow side builds a moat and then wonders why nobody visits.",tr:"Gölge yönünüz bir hendek kazıyor, sonra kimse neden gelmiyor diye merak ediyor."}},
+  leo:{name:{en:"Leo",tr:"Aslan"},glyph:"♌",dates:{en:"Jul 23 – Aug 22",tr:"23 Tem – 22 Ağu"},traits:{en:["Radiant","Main character","Generous tyrant"],tr:["Işıltılı","Başrol","Cömert tiran"]},verdict:{en:"You don't enter rooms, you are cast into them. Your group chat exists because you started it, and you also decide where everyone eats — loudly, democratically, in your favor. Beneath the spotlight is a person who remembers everyone's birthday and buys the best gifts.",tr:"Odalara girmezsiniz, odaya atanırsınız. Grup sohbetiniz var çünkü onu siz başlattınız ve herkesin nerede yiyeceğine de siz karar veriyorsunuz — yüksek sesle, demokratik bir şekilde, kendi lehinize. Spot ışığının altında herkesin doğum gününü hatırlayan ve en iyi hediyeleri alan biri var."},match:{en:"Aries (mutual hype squad) or Sagittarius (double feature)",tr:"Koç (karşılıklı moral ekibi) ya da Yay (çifte gösterim)"},shadow:{en:"Your shadow side needs a witness for its own generosity.",tr:"Gölge yönünüz kendi cömertliğine bir tanık arıyor."}},
+  virgo:{name:{en:"Virgo",tr:"Başak"},glyph:"♍",dates:{en:"Aug 23 – Sep 22",tr:"23 Ağu – 22 Eyl"},traits:{en:["Precise","Quietly superior","Secretly funny"],tr:["Kesin","Sessizce üstün","Gizlice komik"]},verdict:{en:"You have a system for your systems, and you've mentally reorganized this quiz while answering it. Your love language is fixing things nobody knew were broken. You're not judgmental — you just notice everything and, tragically, can articulate it.",tr:"Sistemlerinizin bile bir sistemi var ve siz bu testi yanıtlarken zihninizde yeniden düzenlediniz. Sevgi diliniz kimsenin bozuk olduğunu bilmediği şeyleri tamir etmek. Yargılayıcı değilsiniz — sadece her şeyi fark ediyorsunuz ve ne yazık ki bunu dile getirebiliyorsunuz."},match:{en:"Taurus (peaceful) or Capricorn (efficiency twins)",tr:"Boğa (huzurlu) ya da Oğlak (verimlilik ikizleri)"},shadow:{en:"Your shadow side edits other people's texts in its head.",tr:"Gölge yönünüz başkalarının mesajlarını kafasında düzeltiyor."}},
+  libra:{name:{en:"Libra",tr:"Terazi"},glyph:"♎",dates:{en:"Sep 23 – Oct 22",tr:"23 Eyl – 22 Eki"},traits:{en:["Charming","Conflict-averse","Cannot pick a restaurant"],tr:["Çekici","Çatışmadan kaçan","Restoran seçemez"]},verdict:{en:"You would rather be wrong together than right alone. You've been 'fine, whatever you want' since birth, and inside there is a small librarian screaming about font choices. Everyone tells you their secrets because you look like a warm lamp that listens.",tr:"Birlikte yanılmak, tek başına haklı olmaktan iyidir sizin için. Doğduğunuzdan beri 'iyiyim, sen ne istersen' diyorsunuz ve içeride küçük bir kütüphaneci font seçimleri için çığlık atıyor. Herkes size sırlarını anlatıyor çünkü siz dinleyen sıcak bir lamba gibi görünüyorsunuz."},match:{en:"Gemini (endless conversation) or Aquarius (opposites, politely)",tr:"İkizler (bitmeyen sohbet) ya da Kova (kibar zıtlıklar)"},shadow:{en:"Your shadow side keeps the peace by abandoning the self.",tr:"Gölge yönünüz huzuru kendinden vazgeçerek koruyor."}},
+  scorpio:{name:{en:"Scorpio",tr:"Akrep"},glyph:"♏",dates:{en:"Oct 23 – Nov 21",tr:"23 Eki – 21 Kas"},traits:{en:["Intense","Unforgetting","Weirdly magnetic"],tr:["Yoğun","Unutmayan","Tuhaf biçimde mıknatıslı"]},verdict:{en:"You answer a question with a question, and somehow you're the one being interviewed afterward. People tell you things they've never told anyone, within eleven minutes of meeting you. You do not hold grudges — you hold files, indexed and backed up to the cloud.",tr:"Bir soruya soruyla karşılık veriyorsunuz ve sonunda röportaj yapılan siz oluyorsunuz. İnsanlar sizinle tanıştıktan on bir dakika sonra kimseye söylemedikleri şeyleri anlatıyorlar. Kin tutmuyorsunuz — dosya tutuyorsunuz; indekslenmiş ve buluta yedeklenmiş."},match:{en:"Cancer (ride or die) or Pisces (deep end together)",tr:"Yengeç (sonuna kadar) ya da Balık (birlikte derin sulara)"},shadow:{en:"Your shadow side forgives but never deletes the folder.",tr:"Gölge yönünüz affediyor ama klasörü asla silmiyor."}},
+  sagittarius:{name:{en:"Sagittarius",tr:"Yay"},glyph:"♐",dates:{en:"Nov 22 – Dec 21",tr:"22 Kas – 21 Ara"},traits:{en:["Blunt","Restless","Funnily unhinged"],tr:["Açık sözlü","Huzursuz","Komik derecede kaçık"]},verdict:{en:"You said the thing out loud. In a meeting. On purpose. Your passport has more personality than most people's resumes, and your plan is 'vibes and a departure time.' You give terrible advice with absolute confidence, and, weirdly, it works.",tr:"O şeyi yüksek sesle söylediniz. Bir toplantıda. Bilerek. Pasaportunuz çoğu insanın özgeçmişinden daha fazla kişiliğe sahip ve planınız 'hissiyat ve bir kalkış saati.' Berbat tavsiyeleri mutlak bir özgüvenle veriyorsunuz ve tuhaf biçimde işe yarıyor."},match:{en:"Aries (adventure cult) or Leo (standing ovation included)",tr:"Koç (maceracı tarikat) ya da Aslan (ayakta alkış dahil)"},shadow:{en:"Your shadow side calls it honesty when it's really a confetti cannon.",tr:"Gölge yönünüz buna dürüstlük diyor, oysa aslında bir konfeti topu."}},
+  capricorn:{name:{en:"Capricorn",tr:"Oğlak"},glyph:"♑",dates:{en:"Dec 22 – Jan 19",tr:"22 Ara – 19 Oca"},traits:{en:["Ambitious","Dry as parchment","Old soul"],tr:["Hırslı","Parşömen kadar kuru","Yaşlı ruh"]},verdict:{en:"You were 12 going on 45, and now you're 45 going on mildly relaxed. Fun isn't banned, it's just scheduled — Sunday, 4–6pm, weather permitting. You show love by handling logistics nobody else wanted, then acting like it was nothing.",tr:"12 yaşındayken 45 gibiydiniz, şimdi 45 yaşındasınız ve hafifçe gevşemiş bir 45 gibi. Eğlence yasak değil, sadece planlı — Pazar, 16:00–18:00, hava müsaitse. Kimsenin üstlenmek istemediği lojistiği hallederek sevgi gösteriyor, sonra hiçbir şey değilmiş gibi davranıyorsunuz."},match:{en:"Virgo (silent understanding) or Taurus (earned comfort)",tr:"Başak (sessiz anlayış) ya da Boğa (hak edilmiş konfor)"},shadow:{en:"Your shadow side calls it discipline when it's really a locked door.",tr:"Gölge yönünüz buna disiplin diyor, oysa aslında kilitli bir kapı."}},
+  aquarius:{name:{en:"Aquarius",tr:"Kova"},glyph:"♒",dates:{en:"Jan 20 – Feb 18",tr:"20 Oca – 18 Şub"},traits:{en:["Original","Alien energy","Principled gremlin"],tr:["Özgün","Uzaylı enerjisi","İlkeli gremlin"]},verdict:{en:"You have opinions about pigeons and you will share them. You're the friend who goes quiet, then says something so strange and brilliant the table goes still. You care about humanity in bulk and get awkward with individual humans, which is its own kind of poetry.",tr:"Güvercinler hakkında fikirleriniz var ve bunları paylaşacaksınız. Sessizleşen, sonra o kadar tuhaf ve parlak bir şey söyleyen arkadaşsınız ki masa bir an duruyor. İnsanlığı toptan önemsiyorsunuz ve tek tek insanlarla garipleşiyorsunuz; bu da başlı başına bir şiir."},match:{en:"Gemini (brain-meld) or Libra (opposites, politely)",tr:"İkizler (zihin birleşmesi) ya da Terazi (kibar zıtlıklar)"},shadow:{en:"Your shadow side loves humanity but forgets to text back a human.",tr:"Gölge yönünüz insanlığı seviyor ama bir insana geri yazmayı unutuyor."}},
+  pisces:{name:{en:"Pisces",tr:"Balık"},glyph:"♓",dates:{en:"Feb 19 – Mar 20",tr:"19 Şub – 20 Mar"},traits:{en:["Dreamy","Empathic","Chronically late"],tr:["Hayalperest","Empatik","Kronik geç"]},verdict:{en:"You cried at a commercial for insurance. You apologize to furniture you bump into. You have three imaginary soundtracks playing during ordinary errands, and you're the main character in all of them. Somehow, impossibly, people feel safer around you.",tr:"Bir sigorta reklamına ağladınız. Çarptığınız mobilyalardan özür diliyorsunuz. Sıradan işleriniz sırasında kafanızda üç hayali film müziği çalıyor ve hepsinde başrol sizsiniz. Bir şekilde, imkânsız gibi görünse de, insanlar yanınızda kendini daha güvende hissediyor."},match:{en:"Cancer (twin tide) or Scorpio (deep end together)",tr:"Yengeç (ikiz gelgit) ya da Akrep (birlikte derin sulara)"},shadow:{en:"Your shadow side dissolves instead of deciding.",tr:"Gölge yönünüz karar vermek yerine çözülüp gidiyor."}}
+};
+
+/* ============================================================
+   INTAKE — 2 questions (primary +2 / secondary +1)
+   ============================================================ */
+const INTAKE = [
+  {q:{en:"Which sibling are you in your family?",tr:"Ailenizde kaçıncı çocuksunuz?"},o:[
+    {t:{en:"First and only child",tr:"İlk ve tek çocuk"},p:"capricorn",s:"virgo"},
+    {t:{en:"First of two siblings",tr:"İki kardeşin ilki"},p:"leo",s:"capricorn"},
+    {t:{en:"Second of two siblings",tr:"İki kardeşin ikincisi"},p:"libra",s:"pisces"},
+    {t:{en:"First child of three or more siblings",tr:"Üç veya daha fazla kardeşin ilk çocuğu"},p:"aries",s:"capricorn"},
+    {t:{en:"Second child of three or more siblings",tr:"Üç veya daha fazla kardeşin ikinci çocuğu"},p:"gemini",s:"libra"},
+    {t:{en:"Any child in the middle of four or more siblings",tr:"Dört veya daha fazla kardeşin ortasındaki çocuk"},p:"aquarius",s:"libra"},
+    {t:{en:"The last child of three or more siblings",tr:"Üç veya daha fazla kardeşin en küçük çocuğu"},p:"sagittarius",s:"gemini"}
+  ]},
+  {q:{en:"Who knows you best in the world, compared to everyone else?",tr:"Dünyada sizi en iyi tanıyan kim?"},o:[
+    {t:{en:"My parents, or one of my parents",tr:"Annem babam ya da biri"},p:"cancer",s:"taurus"},
+    {t:{en:"One of my siblings",tr:"Kardeşlerimden biri"},p:"gemini",s:"aries"},
+    {t:{en:"My friend or friends",tr:"Arkadaşım ya da arkadaşlarım"},p:"leo",s:"libra"},
+    {t:{en:"My colleagues",tr:"İş arkadaşlarım"},p:"capricorn",s:"virgo"},
+    {t:{en:"My therapist or psychologist",tr:"Terapistim ya da psikoloğum"},p:"aquarius",s:"virgo"},
+    {t:{en:"Nobody but me",tr:"Benden başka kimse"},p:"scorpio",s:"aquarius"},
+    {t:{en:"I'm not sure, or I don't know",tr:"Emin değilim ya da bilmiyorum"},p:"pisces",s:"libra"}
+  ]}
+];
+
+/* ============================================================
+   ZODIAC QUIZ — 24 questions × 4 options = 96 slots, 8 per sign
+   ============================================================ */
+const ZODIAC_QUIZ = [
+  {q:{en:"It's 11:47pm. Your phone buzzes. Who are you hoping it is?",tr:"Saat 23:47. Telefonunuz titriyor. Kimin yazdığını umuyorsunuz?"},o:[
+    {t:{en:"Your ex, finally texting back. You have a speech prepared.",tr:"Eski sevgiliniz, sonunda cevap yazıyor. Hazırda bir konuşmanız var."},s:"aries"},
+    {t:{en:"Nobody. You're mid-binge and don't want to know.",tr:"Kimse. Dizi maratonunun ortasındasınız ve bilmek istemiyorsunuz."},s:"taurus"},
+    {t:{en:"Anyone, honestly — you'll reply to all three chats at once.",tr:"Açıkçası herhangi biri — üç sohbete aynı anda cevap yazacaksınız."},s:"gemini"},
+    {t:{en:"Your best friend. They sounded off earlier and you're worried.",tr:"En yakın arkadaşınız. Bugün sesi tuhaf çıktı ve endişelisiniz."},s:"cancer"}
+  ]},
+  {q:{en:"Pick a crime. We're keeping this between us and the stars.",tr:"Bir suç seçin. Bu, sizinle yıldızlar arasında kalsın."},o:[
+    {t:{en:"Grand theft of a spotlight. Any spotlight.",tr:"Büyük çapta spot ışığı hırsızlığı. Herhangi bir spot."},s:"leo"},
+    {t:{en:"Tax evasion, but perfectly organized and cross-referenced.",tr:"Vergi kaçakçılığı, ama mükemmel organize ve çapraz referanslı."},s:"virgo"},
+    {t:{en:"Perjury to protect a friend's vibe.",tr:"Bir arkadaşınızın modunu korumak için yalancı şahitlik."},s:"libra"},
+    {t:{en:"Arson. Emotionally. Metaphorically. Mostly.",tr:"Kundakçılık. Duygusal. Mecazi. Çoğunlukla."},s:"scorpio"}
+  ]},
+  {q:{en:"A wizard offers to make you devastatingly attractive, but you must give up one thing. Which?",tr:"Bir büyücü sizi yıkıcı derecede çekici yapmayı teklif ediyor, ama bir şeyden vazgeçmeniz gerekiyor. Hangisi?"},o:[
+    {t:{en:"My luggage. Never needed it.",tr:"Bavulum. Hiç gerek duymadım."},s:"sagittarius"},
+    {t:{en:"My free time. That was already gone.",tr:"Boş zamanım. O zaten yoktu."},s:"capricorn"},
+    {t:{en:"My humanity. Fascinating offer, tell me more.",tr:"İnsanlığım. İlginç bir teklif, devam edin."},s:"aquarius"},
+    {t:{en:"My bones. I'd float instead. Sounds nice.",tr:"Kemiklerim. Bunun yerine süzülürüm. Kulağa hoş geliyor."},s:"pisces"}
+  ]},
+  {q:{en:"You're trapped in an elevator for 4 hours. What happens?",tr:"Asansörde 4 saat mahsur kaldınız. Ne oluyor?"},o:[
+    {t:{en:"You try to pry the doors open at minute nine.",tr:"Dokuzuncu dakikada kapıları kanırtmaya başlıyorsunuz."},s:"aries"},
+    {t:{en:"You brought snacks. You are thriving. Leave me.",tr:"Yanınızda atıştırmalık getirmişsiniz. Keyfiniz yerinde. Beni rahat bırakın."},s:"taurus"},
+    {t:{en:"You interview every passenger and learn their trauma.",tr:"Her yolcuyu sorguya çekiyor ve travmalarını öğreniyorsunuz."},s:"gemini"},
+    {t:{en:"You comfort the stranger having a panic attack.",tr:"Panik atak geçiren yabancıyı teselli ediyorsunuz."},s:"cancer"}
+  ]},
+  {q:{en:"What's your most genuinely toxic trait?",tr:"En gerçekten toksik özelliğiniz ne?"},o:[
+    {t:{en:"Needing applause. Constantly. Or at least a thumbs-up.",tr:"Alkışa ihtiyaç duymak. Sürekli. Ya da en azından bir başparmak."},s:"leo"},
+    {t:{en:"Correcting people mid-sentence. Compassionately.",tr:"İnsanları cümle ortasında düzeltmek. Şefkatle."},s:"virgo"},
+    {t:{en:"Agreeing to everything, then resenting it quietly.",tr:"Her şeye evet demek, sonra sessizce içerlemek."},s:"libra"},
+    {t:{en:"Keeping score in a notebook you'll never show anyone.",tr:"Kimseye göstermeyeceğiniz bir defterde skor tutmak."},s:"scorpio"}
+  ]},
+  {q:{en:"Your group chat is planning a trip. Your role is…",tr:"Grup sohbetiniz bir gezi planlıyor. Sizin rolünüz…"},o:[
+    {t:{en:"Suggesting we just drive and figure it out.",tr:"'Arabaya atlayıp gidelim, gerisini hallederiz' demek."},s:"sagittarius"},
+    {t:{en:"Confirming the deposit, the insurance, and the group chat rules.",tr:"Depozitoyu, sigortayı ve grup sohbeti kurallarını onaylamak."},s:"capricorn"},
+    {t:{en:"Proposing a completely different trip nobody asked for.",tr:"Kimsenin istemediği tamamen farklı bir gezi önermek."},s:"aquarius"},
+    {t:{en:"Sending a mood board and then going quiet for two days.",tr:"Bir mood board gönderip iki gün sessizliğe gömülmek."},s:"pisces"}
+  ]},
+  {q:{en:"A stranger is crying on a park bench. You…",tr:"Bir yabancı park bankında ağlıyor. Siz…"},o:[
+    {t:{en:"Sit down and ask what happened. Directly. No preamble.",tr:"Yanına oturup ne olduğunu soruyorsunuz. Doğrudan. Girişsiz."},s:"aries"},
+    {t:{en:"Buy them a pastry and leave it beside them without a word.",tr:"Onlara bir hamur işi alıp tek kelime etmeden yanına bırakıyorsunuz."},s:"taurus"},
+    {t:{en:"Ask a question so specific it makes them laugh first.",tr:"O kadar spesifik bir soru soruyorsunuz ki önce gülüyorlar."},s:"gemini"},
+    {t:{en:"Sit quietly nearby until they're ready to talk.",tr:"Konuşmaya hazır olana kadar sessizce yakınlarında oturuyorsunuz."},s:"cancer"}
+  ]},
+  {q:{en:"You're at a party and the host says 'make yourself at home.' You…",tr:"Bir partidesiniz ve ev sahibi 'kendi eviniz gibi davranın' diyor. Siz…"},o:[
+    {t:{en:"End up telling a story to a circle of six strangers.",tr:"Altı yabancıdan oluşan bir çembere hikâye anlatırken buluyorsunuz kendinizi."},s:"leo"},
+    {t:{en:"Reorganize the snack table because it's chaos.",tr:"Atıştırmalık masasını yeniden düzenliyorsunuz çünkü kaos var."},s:"virgo"},
+    {t:{en:"Compliment the host's playlist and mediate a mild argument.",tr:"Ev sahibinin çalma listesini övüp hafif bir tartışmayı yatıştırıyorsunuz."},s:"libra"},
+    {t:{en:"Find the one person with an interesting secret and stay there.",tr:"İlginç bir sırrı olan tek kişiyi bulup orada kalıyorsunuz."},s:"scorpio"}
+  ]},
+  {q:{en:"Your friend asks you to review their creative work. You…",tr:"Arkadaşınız yaratıcı işini değerlendirmenizi istiyor. Siz…"},o:[
+    {t:{en:"Tell them to trust the weird part and go further.",tr:"'Tuhaf kısma güven ve daha ileri git' diyorsunuz."},s:"sagittarius"},
+    {t:{en:"Give a clear, structured critique with next steps.",tr:"Net, yapılandırılmış bir eleştiri ve sonraki adımlarla geliyorsunuz."},s:"capricorn"},
+    {t:{en:"Question the whole premise. Lovingly. Then help rebuild.",tr:"Tüm öncülü sorguluyorsunuz. Sevgiyle. Sonra yeniden inşa ediyorsunuz."},s:"aquarius"},
+    {t:{en:"Feel it deeply, then describe the feeling in a paragraph.",tr:"Derinden hissediyor, sonra hissi bir paragrafla anlatıyorsunuz."},s:"pisces"}
+  ]},
+  {q:{en:"You're offered a job that's prestigious but boring. You…",tr:"Prestijli ama sıkıcı bir iş teklifi alıyorsunuz. Siz…"},o:[
+    {t:{en:"Take it, then quit in three months for something wilder.",tr:"Kabul ediyorsunuz, üç ay sonra daha çılgın bir şey için ayrılıyorsunuz."},s:"aries"},
+    {t:{en:"Take it. It pays for the life you actually want.",tr:"Kabul ediyorsunuz. Gerçekten istediğiniz hayatı finanse ediyor."},s:"taurus"},
+    {t:{en:"Take it and start three side projects immediately.",tr:"Kabul edip hemen üç yan projeye başlıyorsunuz."},s:"gemini"},
+    {t:{en:"Take it if it means stability for the people you love.",tr:"Sevdikleriniz için istikrar demekse kabul ediyorsunuz."},s:"cancer"}
+  ]},
+  {q:{en:"It's 3am and you can't sleep. Your brain is…",tr:"Saat 03:00 ve uyuyamıyorsunuz. Aklınız…"},o:[
+    {t:{en:"Writing an acceptance speech for an award you'll never win.",tr:"Asla kazanamayacağınız bir ödül için teşekkür konuşması yazıyor."},s:"leo"},
+    {t:{en:"Making a mental list of everything you did wrong today.",tr:"Bugün yaptığınız tüm yanlışların listesini çıkarıyor."},s:"virgo"},
+    {t:{en:"Wondering if that thing you said landed wrong.",tr:"Söylediğiniz o şeyin yanlış mı düştüğünü düşünüyor."},s:"libra"},
+    {t:{en:"Cataloging every secret you've ever been told.",tr:"Size söylenmiş tüm sırları katalogluyor."},s:"scorpio"}
+  ]},
+  {q:{en:"You're asked to describe your relationship with rules. You say…",tr:"Kurallarla ilişkinizi anlatmanız isteniyor. Şöyle diyorsunuz…"},o:[
+    {t:{en:"Rules are suggestions. Strong suggestions. That I ignore.",tr:"Kurallar öneridir. Güçlü öneriler. Görmezden geldiğim."},s:"sagittarius"},
+    {t:{en:"I follow them. It's a stepping stone. I have a five-year plan.",tr:"Uyuyorum. Bu bir basamak. Beş yıllık bir planım var."},s:"capricorn"},
+    {t:{en:"I follow the spirit, not the letter. And I'll argue about it.",tr:"Lafzına değil ruhuna uyarım. Ve bunu tartışırım."},s:"aquarius"},
+    {t:{en:"I follow them when they protect people. Otherwise, no.",tr:"İnsanları koruyorsa uyarım. Aksi halde hayır."},s:"pisces"}
+  ]},
+  {q:{en:"Someone asks what you did last Tuesday. Your honest answer is…",tr:"Biri geçen Salı ne yaptığınızı soruyor. Dürüst cevabınız…"},o:[
+    {t:{en:"I said I'd 'just stop by' somewhere and stayed for six hours. Classic me.",tr:"'Sadece uğrayacağım' dedim ve altı saat kaldım. Klasik ben."},s:"aries"},
+    {t:{en:"I made a spreadsheet about my own habits and then ignored it.",tr:"Kendi alışkanlıklarım hakkında bir tablo yaptım, sonra görmezden geldim."},s:"taurus"},
+    {t:{en:"I had four conversations I can't remember having, but I'm told I was hilarious.",tr:"Hatırlamadığım dört sohbet yaptım, ama çok komik olduğum söylendi."},s:"gemini"},
+    {t:{en:"I texted three people to check on them and forgot to eat dinner.",tr:"Üç kişiye yazıp hallerini sordum ve akşam yemeğini unuttum."},s:"cancer"}
+  ]},
+  {q:{en:"You're still annoyed about something minor from months ago. What is it?",tr:"Aylar önce olan küçük bir şeye hâlâ sinirlisiniz. Nedir?"},o:[
+    {t:{en:"Someone didn't compliment a thing I did. I noticed. I remember.",tr:"Biri yaptığım bir şeyi övmedi. Fark ettim. Hatırlıyorum."},s:"leo"},
+    {t:{en:"A restaurant brought the wrong side and I said it was fine. It was not fine.",tr:"Bir restoran yanlış garnitür getirdi ve 'sorun değil' dedim. Sorun değildi."},s:"virgo"},
+    {t:{en:"A friend cancelled on me and I said 'no worries' with a period.",tr:"Bir arkadaşım iptal etti ve 'sorun yok.' yazdım. Noktayla."},s:"libra"},
+    {t:{en:"I know something about someone. I will never say it. But I know it.",tr:"Biri hakkında bir şey biliyorum. Asla söylemeyeceğim. Ama biliyorum."},s:"scorpio"}
+  ]},
+  {q:{en:"You cancel plans two hours before. Your actual reason is…",tr:"İki saat önce planları iptal ediyorsunuz. Gerçek sebebiniz…"},o:[
+    {t:{en:"I found something more interesting to do. I feel zero guilt.",tr:"Daha ilginç bir şey buldum. Hiç suçluluk duymuyorum."},s:"sagittarius"},
+    {t:{en:"I'm behind on a project I invented for myself. It matters.",tr:"Kendim için icat ettiğim bir projede gerideyim. Önemli."},s:"capricorn"},
+    {t:{en:"I had a thought about a system and I need to follow it.",tr:"Bir sistem hakkında bir fikrim geldi ve peşinden gitmem lazım."},s:"aquarius"},
+    {t:{en:"I'm tired and I can't explain it without sounding dramatic.",tr:"Yorgunum ve dramatik görünmeden açıklayamıyorum."},s:"pisces"}
+  ]},
+  {q:{en:"What's in your bag right now, honestly?",tr:"Şu anda çantanızda ne var, dürüst olun."},o:[
+    {t:{en:"Gym clothes I haven't used, a granola bar, and a lot of ambition.",tr:"Kullanmadığım spor kıyafetleri, bir granola bar ve bolca hırs."},s:"aries"},
+    {t:{en:"Snacks, a book, a charger, and a backup charger.",tr:"Atıştırmalıklar, bir kitap, bir şarj aleti ve yedek şarj aleti."},s:"taurus"},
+    {t:{en:"Three books, two notebooks, one of them has a to-do list for the other.",tr:"Üç kitap, iki defter; birinin içinde diğeri için yapılacaklar listesi var."},s:"gemini"},
+    {t:{en:"A photo of someone I love, tissues, and something someone gave me years ago.",tr:"Sevdiğim birinin fotoğrafı, mendil ve birinin yıllar önce verdiği bir şey."},s:"cancer"}
+  ]},
+  {q:{en:"Someone gives you a genuine compliment. Your honest internal response is…",tr:"Biri size içten bir iltifat ediyor. İçten içe dürüst tepkiniz…"},o:[
+    {t:{en:"Obviously. But say more. What specifically?",tr:"Tabii ki. Ama devam edin. Tam olarak ne?"},s:"leo"},
+    {t:{en:"Thank you — but also, I noticed three things wrong with what I did.",tr:"Teşekkürler — ama ayrıca yaptığım işte üç yanlış fark ettim."},s:"virgo"},
+    {t:{en:"I smile and deflect and think about it for a week.",tr:"Gülümsüyorum, savuşturuyorum ve bir hafta boyunca düşünüyorum."},s:"libra"},
+    {t:{en:"I clock exactly why they said it and file it away.",tr:"Neden söylediklerini tam olarak çözüp dosyalıyorum."},s:"scorpio"}
+  ]},
+  {q:{en:"You're planning something with friends. What actually happens?",tr:"Arkadaşlarla bir şey planlıyorsunuz. Gerçekte ne oluyor?"},o:[
+    {t:{en:"I book the thing, text 'no takebacks,' and it's done.",tr:"Yeri ayarlıyorum, 'iptal yok' yazıyorum, bitti."},s:"sagittarius"},
+    {t:{en:"I make a doc, a budget, a contingency, and a color-coded calendar.",tr:"Bir belge, bir bütçe, bir B planı ve renk kodlu bir takvim hazırlıyorum."},s:"capricorn"},
+    {t:{en:"I propose a completely different plan mid-conversation and now we're doing that.",tr:"Sohbetin ortasında tamamen farklı bir plan öneriyorum ve şimdi onu yapıyoruz."},s:"aquarius"},
+    {t:{en:"I ask everyone what they want and then quietly do whatever's easiest for the group.",tr:"Herkese ne istediğini soruyorum, sonra grubun en kolayına geleni sessizce yapıyorum."},s:"pisces"}
+  ]},
+  {q:{en:"You realize you hurt someone's feelings. You…",tr:"Birinin duygularını incittiğinizi fark ediyorsunuz. Siz…"},o:[
+    {t:{en:"Call them immediately and say the whole thing, plainly.",tr:"Hemen arıyorum ve her şeyi olduğu gibi söylüyorum."},s:"aries"},
+    {t:{en:"Give them space, then show up with food and a quiet apology.",tr:"Onlara alan veriyorum, sonra yemekle ve sessiz bir özürle geliyorum."},s:"taurus"},
+    {t:{en:"Text a long, nuanced explanation that accidentally makes it worse.",tr:"Uzun, nüanslı bir açıklama yazıyorum ve istemeden daha kötü yapıyorum."},s:"gemini"},
+    {t:{en:"Apologize, then spend three days worrying you apologized wrong.",tr:"Özür diliyorum, sonra üç gün yanlış özür dilediğim için endişeleniyorum."},s:"cancer"}
+  ]},
+  {q:{en:"If someone read your last five text messages, they'd think you were…",tr:"Biri son beş mesajınızı okusa, sizin… olduğunuzu düşünürdü."},o:[
+    {t:{en:"A motivational speaker with a caffeine problem.",tr:"Kafein problemi olan bir motivasyon konuşmacısı."},s:"leo"},
+    {t:{en:"An editor who is quietly losing their mind.",tr:"Sessizce aklını kaybeden bir editör."},s:"virgo"},
+    {t:{en:"Someone who says 'totally' a lot and means it every time.",tr:"Çok sık 'kesinlikle' diyen ve her seferinde ciddi olan biri."},s:"libra"},
+    {t:{en:"A person who types the message, deletes it, and sends a shorter, colder one.",tr:"Mesajı yazıp silen ve daha kısa, daha soğuk bir tane gönderen biri."},s:"scorpio"}
+  ]},
+  {q:{en:"A friend pitches a wild idea at 6pm on a Friday. You…",tr:"Bir arkadaşınız Cuma akşamı 18:00'de çılgın bir fikir ortaya atıyor. Siz…"},o:[
+    {t:{en:"Say yes before they finish the sentence.",tr:"Cümlesini bitirmeden 'evet' diyorum."},s:"sagittarius"},
+    {t:{en:"Ask for a plan, a budget, and a timeline by Sunday.",tr:"Pazara kadar bir plan, bir bütçe ve bir takvim istiyorum."},s:"capricorn"},
+    {t:{en:"Say yes, then redesign the whole thing conceptually.",tr:"Evet diyorum, sonra bütün konsepti yeniden tasarlıyorum."},s:"aquarius"},
+    {t:{en:"Say 'sounds fun' and immediately imagine the worst case.",tr:"'Kulağa eğlenceli geliyor' deyip hemen en kötü senaryoyu hayal ediyorum."},s:"pisces"}
+  ]},
+  {q:{en:"You walk into a room full of strangers. Your first move is…",tr:"Yabancılarla dolu bir odaya giriyorsunuz. İlk hamleniz…"},o:[
+    {t:{en:"Find the loudest person and out-loudest them.",tr:"En gürültülü kişiyi bulup ondan daha gürültülü oluyorum."},s:"leo"},
+    {t:{en:"Find the host, thank them, and figure out the layout of the room.",tr:"Ev sahibini bulup teşekkür ediyorum ve odanın düzenini çözüyorum."},s:"virgo"},
+    {t:{en:"Find the quietest person and ask them a real question.",tr:"En sessiz kişiyi bulup ona gerçek bir soru soruyorum."},s:"libra"},
+    {t:{en:"Find the exit, then find the one person worth talking to.",tr:"Çıkışı buluyorum, sonra konuşmaya değer tek kişiyi buluyorum."},s:"scorpio"}
+  ]},
+  {q:{en:"There's a message you typed and never sent. It says…",tr:"Yazıp hiç göndermediğiniz bir mesaj var. Şöyle diyor…"},o:[
+    {t:{en:"Something honest that would change the friendship.",tr:"Arkadaşlığı değiştirecek kadar dürüst bir şey."},s:"aries"},
+    {t:{en:"Something you decided wasn't worth the effort to argue about.",tr:"Tartışmaya değmeyeceğine karar verdiğiniz bir şey."},s:"taurus"},
+    {t:{en:"Something you rewrote eleven times and gave up on.",tr:"On bir kez yeniden yazıp vazgeçtiğiniz bir şey."},s:"gemini"},
+    {t:{en:"Something that would make someone cry if they read it.",tr:"Okusalar birini ağlatacak bir şey."},s:"cancer"}
+  ]},
+  {q:{en:"Your ideal Saturday has…",tr:"İdeal bir Cumartesinizde şunlar var…"},o:[
+    {t:{en:"A spontaneous road trip with no destination.",tr:"Hedefi olmayan spontane bir yol gezisi."},s:"sagittarius"},
+    {t:{en:"A clean apartment, a good meal, and everything checked off.",tr:"Temiz bir daire, güzel bir yemek ve her şeyin üstü çizilmiş."},s:"capricorn"},
+    {t:{en:"A weird podcast, a longer walk, and a thought you can't shake.",tr:"Tuhaf bir podcast, daha uzun bir yürüyüş ve kafanızdan atamadığınız bir düşünce."},s:"aquarius"},
+    {t:{en:"Rain, a playlist, and a feeling you can't quite name.",tr:"Yağmur, bir çalma listesi ve tam adlandıramadığınız bir his."},s:"pisces"}
+  ]}
+];
+
+/* ============================================================
+   MBTI QUESTIONS — 20 questions, 5 per axis (E/I, S/N, T/F, J/P).
+   All original, written for this app. Framework is public domain.
+   Each option: [text, axisLetter]
+   ============================================================ */
+const MBTI_QUIZ = [
+  // E / I — 5 questions
+  {q:{en:"A long week ends. Your ideal Friday night is…",tr:"Uzun bir hafta bitti. İdeal Cuma akşamınız…"},o:[
+    {t:{en:"Out with people. The more, the louder, the better.",tr:"İnsanlarla dışarıda. Ne kadar kalabalık ve gürültülü olursa o kadar iyi."},a:"E"},
+    {t:{en:"Home alone with a show and zero notifications.",tr:"Evde yalnız, bir diziyle ve sıfır bildirimle."},a:"I"},
+    {t:{en:"One close friend, one good meal, deep conversation.",tr:"Tek bir yakın arkadaş, güzel bir yemek, derin bir sohbet."},a:"I"},
+    {t:{en:"Whatever's happening — I'll find out when I get there.",tr:"Ne oluyorsa olsun — gidince öğrenirim."},a:"E"}
+  ]},
+  {q:{en:"You're at a party where you know almost nobody. After an hour you feel…",tr:"Neredeyse kimseyi tanımadığınız bir partidesiniz. Bir saat sonra…"},o:[
+    {t:{en:"Energized. I've met four people and started a debate.",tr:"Enerjik. Dört kişiyle tanıştım ve bir tartışma başlattım."},a:"E"},
+    {t:{en:"Ready to leave. I came, I smiled, I'm done.",tr:"Gitmeye hazır. Geldim, gülümsedim, bitti."},a:"I"},
+    {t:{en:"Trying to find the one person I can talk to for two hours.",tr:"İki saat konuşabileceğim tek kişiyi bulmaya çalışıyorum."},a:"I"},
+    {t:{en:"Warm, chatty, and mildly sorry I have to go home eventually.",tr:"Sıcak, konuşkan ve bir noktada eve gitmek zorunda olduğum için hafif üzgün."},a:"E"}
+  ]},
+  {q:{en:"You get big news — good or bad. Your first instinct is to…",tr:"Büyük bir haber aldınız — iyi ya da kötü. İlk içgüdünüz…"},o:[
+    {t:{en:"Call someone immediately and say it out loud.",tr:"Hemen birini arayıp yüksek sesle söylemek."},a:"E"},
+    {t:{en:"Sit with it quietly before telling anyone.",tr:"Kimseye söylemeden önce sessizce oturup düşünmek."},a:"I"},
+    {t:{en:"Text one person who'll understand, then go about my day.",tr:"Anlayacak tek bir kişiye yazıp günüme devam etmek."},a:"I"},
+    {t:{en:"Tell three people in the first ten minutes. Maybe four.",tr:"İlk on dakikada üç kişiye söylemek. Belki dört."},a:"E"}
+  ]},
+  {q:{en:"A meeting runs long and turns into open discussion. You…",tr:"Bir toplantı uzadı ve açık tartışmaya dönüştü. Siz…"},o:[
+    {t:{en:"Jump in with three points before the moment passes.",tr:"Fırsat kaçmadan üç noktayla atlıyorum."},a:"E"},
+    {t:{en:"Wait, collect my thoughts, and speak once, well.",tr:"Bekliyorum, düşüncelerimi topluyorum ve bir kez, iyi konuşuyorum."},a:"I"},
+    {t:{en:"Contribute when it's clearly my area, otherwise listen.",tr:"Açıkça benim alanımsa katkı veririm, yoksa dinlerim."},a:"I"},
+    {t:{en:"Ask the question everyone else was thinking but didn't say.",tr:"Herkesin düşünüp de söylemediği soruyu soruyorum."},a:"E"}
+  ]},
+  {q:{en:"You have a free Sunday and no plans. By evening, you…",tr:"Planı olmayan boş bir Pazar. Akşama doğru…"},o:[
+    {t:{en:"Texted five people and ended up at a spontaneous dinner.",tr:"Beş kişiye yazdım ve spontane bir akşam yemeğinde buldum kendimi."},a:"E"},
+    {t:{en:"Read, walked, cooked, and didn't say ten words out loud.",tr:"Okudum, yürüdüm, yemek yaptım ve on kelimeden fazla yüksek sesle konuşmadım."},a:"I"},
+    {t:{en:"Got deep into one project and forgot to eat lunch.",tr:"Bir projeye daldım ve öğle yemeğini yemeyi unuttum."},a:"I"},
+    {t:{en:"Ran into three people I know and had a great time doing it.",tr:"Tanıdığım üç kişiye rastladım ve bundan çok keyif aldım."},a:"E"}
+  ]},
+
+  // S / N — 5 questions
+  {q:{en:"You're told about a new idea at work. You immediately…",tr:"İş yerinde yeni bir fikir duyuyorsunuz. Hemen…"},o:[
+    {t:{en:"Ask how it works in practice. Steps, timeline, owners.",tr:"Pratikte nasıl işleyeceğini soruyorum. Adımlar, takvim, sorumlular."},a:"S"},
+    {t:{en:"Think about what it could become if we pushed it further.",tr:"Daha ileri götürürsek neye dönüşebileceğini düşünüyorum."},a:"N"},
+    {t:{en:"Compare it to something similar that worked before.",tr:"Daha önce işe yarayan benzer bir şeye benzetiyorum."},a:"S"},
+    {t:{en:"Wonder what it says about where the whole field is heading.",tr:"Bunun tüm alanın nereye gittiği hakkında ne söylediğini merak ediyorum."},a:"N"}
+  ]},
+  {q:{en:"You're reading a book. What keeps you turning pages?",tr:"Bir kitap okuyorsunuz. Sizi sayfa çevirmeye iten ne?"},o:[
+    {t:{en:"Vivid scenes and details I can picture exactly.",tr:"Tam olarak gözümde canlandırabildiğim canlı sahneler ve detaylar."},a:"S"},
+    {t:{en:"Big ideas that reframe something I thought I knew.",tr:"Bildiğimi sandığım bir şeyi yeniden çerçeveleyen büyük fikirler."},a:"N"},
+    {t:{en:"Characters whose choices feel real and specific.",tr:"Seçimleri gerçek ve spesifik hissettiren karakterler."},a:"S"},
+    {t:{en:"Themes that make me think about my own life differently.",tr:"Kendi hayatımı farklı düşünmemi sağlayan temalar."},a:"N"}
+  ]},
+  {q:{en:"You're giving directions to a friend. You…",tr:"Bir arkadaşınıza yol tarif ediyorsunuz. Siz…"},o:[
+    {t:{en:"Name the streets, the turns, the landmarks.",tr:"Sokakları, dönüşleri, simge yapıları sayıyorum."},a:"S"},
+    {t:{en:"Describe the general shape of the journey and the vibe.",tr:"Yolculuğun genel şeklini ve hissini tarif ediyorum."},a:"N"},
+    {t:{en:"Say 'turn left at the place with the terrible parking.'",tr:"'Berbat otoparkı olan yerden sola dön' diyorum."},a:"S"},
+    {t:{en:"Say 'you'll know it when you're almost there.'",tr:"'Neredeyse vardığında anlayacaksın' diyorum."},a:"N"}
+  ]},
+  {q:{en:"You're planning a trip. What excites you most?",tr:"Bir gezi planlıyorsunuz. Sizi en çok ne heyecanlandırıyor?"},o:[
+    {t:{en:"The specific places I'll eat and walk and see.",tr:"Yiyeceğim, yürüyeceğim ve göreceğim spesifik yerler."},a:"S"},
+    {t:{en:"The version of myself I might become there.",tr:"Orada dönüşebileceğim kendim versiyonu."},a:"N"},
+    {t:{en:"Booking the details so nothing goes wrong.",tr:"Hiçbir şeyin ters gitmemesi için detayları ayarlamak."},a:"S"},
+    {t:{en:"Leaving room for the unplanned and unexpected.",tr:"Planlanmamış ve beklenmedik şeylere yer bırakmak."},a:"N"}
+  ]},
+  {q:{en:"Someone tells you a story that doesn't quite add up. You…",tr:"Birisi tam oturmayan bir hikâye anlatıyor. Siz…"},o:[
+    {t:{en:"Ask for the missing details until it makes sense.",tr:"Anlamlı hale gelene kadar eksik detayları soruyorum."},a:"S"},
+    {t:{en:"Wonder what they're really trying to say underneath.",tr:"Altında aslında ne söylemek istediklerini merak ediyorum."},a:"N"},
+    {t:{en:"Note the specific things that don't line up.",tr:"Uyuşmayan spesifik şeyleri not ediyorum."},a:"S"},
+    {t:{en:"Think about what the story says about them as a person.",tr:"Hikâyenin onlar hakkında bir kişi olarak ne söylediğini düşünüyorum."},a:"N"}
+  ]},
+
+  // T / F — 5 questions
+  {q:{en:"A friend is upset about something that, honestly, they caused. You…",tr:"Bir arkadaşınız, dürüst olmak gerekirse kendi sebep olduğu bir şeye üzülüyor. Siz…"},o:[
+    {t:{en:"Help them see the pattern so it doesn't happen again.",tr:"Bir daha olmaması için kalıbı görmelerine yardım ediyorum."},a:"T"},
+    {t:{en:"Let them vent first. Solutions can wait.",tr:"Önce içini dökmelerine izin veriyorum. Çözümler bekleyebilir."},a:"F"},
+    {t:{en:"Say the honest thing, kindly, because they trust me.",tr:"Dürüst şeyi, nazikçe söylüyorum çünkü bana güveniyorlar."},a:"T"},
+    {t:{en:"Ask how they're feeling before I say anything else.",tr:"Başka bir şey söylemeden önce nasıl hissettiklerini soruyorum."},a:"F"}
+  ]},
+  {q:{en:"You're choosing between two good options. You decide by…",tr:"İki iyi seçenek arasında seçim yapıyorsunuz. Kararınızı…"},o:[
+    {t:{en:"Listing pros and cons and weighing them honestly.",tr:"Artıları ve eksileri listeleyip dürüstçe tartarak veriyorum."},a:"T"},
+    {t:{en:"Asking which one feels right in my gut.",tr:"Hangisinin içgüdüsel olarak doğru hissettirdiğini sorarak veriyorum."},a:"F"},
+    {t:{en:"Asking which one is more consistent with my values.",tr:"Hangisinin değerlerimle daha tutarlı olduğunu sorarak veriyorum."},a:"F"},
+    {t:{en:"Asking which one is more logical long-term.",tr:"Hangisinin uzun vadede daha mantıklı olduğunu sorarak veriyorum."},a:"T"}
+  ]},
+  {q:{en:"Someone criticizes your work in front of others. Your first thought is…",tr:"Biri başkalarının önünde işinizi eleştiriyor. İlk düşünceniz…"},o:[
+    {t:{en:"Is the criticism accurate? If yes, fine. If no, push back.",tr:"Eleştiri doğru mu? Doğruysa sorun yok. Değilse itiraz ederim."},a:"T"},
+    {t:{en:"Why here? Why now? This could have been a private message.",tr:"Neden burada? Neden şimdi? Bu özel bir mesaj olabilirdi."},a:"F"},
+    {t:{en:"Okay. What specifically needs to change?",tr:"Tamam. Tam olarak neyin değişmesi gerekiyor?"},a:"T"},
+    {t:{en:"I need a minute. That stung more than I'll admit.",tr:"Bir dakikaya ihtiyacım var. Bu göründüğünden çok daha fazla dokundu."},a:"F"}
+  ]},
+  {q:{en:"You're leading a team and someone is underperforming. You…",tr:"Bir ekibi yönetiyorsunuz ve biri beklenenin altında performans gösteriyor. Siz…"},o:[
+    {t:{en:"Have a direct conversation about expectations and next steps.",tr:"Beklentiler ve sonraki adımlar hakkında doğrudan bir konuşma yapıyorum."},a:"T"},
+    {t:{en:"Check in first. Something might be going on outside work.",tr:"Önce bir nabız yokluyorum. İş dışında bir şey olabilir."},a:"F"},
+    {t:{en:"Document it and follow a clear process if it continues.",tr:"Kayda geçiriyorum ve devam ederse net bir süreç izliyorum."},a:"T"},
+    {t:{en:"Ask what they need from me before I ask what they owe the team.",tr:"Takıma ne borçlu olduklarını sormadan önce benden neye ihtiyaçları olduğunu soruyorum."},a:"F"}
+  ]},
+  {q:{en:"You're watching a film that ends ambiguously. You feel…",tr:"Belirsiz biten bir film izliyorsunuz. Kendinizi…"},o:[
+    {t:{en:"Curious. I'll think about what the ending argued.",tr:"Meraklı hissediyorum. Finalin ne savunduğunu düşüneceğim."},a:"T"},
+    {t:{en:"Moved. I'll sit with the feeling for a while.",tr:"Duygulanmış hissediyorum. Bir süre bu hisle oturacağım."},a:"F"},
+    {t:{en:"Slightly annoyed. I wanted to know what actually happened.",tr:"Hafif sinirli hissediyorum. Gerçekte ne olduğunu bilmek istiyordum."},a:"T"},
+    {t:{en:"Grateful. Ambiguity is closer to real life than tidy answers.",tr:"Minnettar hissediyorum. Belirsizlik, düzenli cevaplardan çok gerçek hayata daha yakın."},a:"F"}
+  ]},
+
+  // J / P — 5 questions
+  {q:{en:"Your ideal trip is…",tr:"İdeal geziniz…"},o:[
+    {t:{en:"A plan, a schedule, and a backup plan for the schedule.",tr:"Bir plan, bir program ve program için bir yedek plan."},a:"J"},
+    {t:{en:"A flight booked and nothing else. Figure it out there.",tr:"Bir uçuş bileti ve başka hiçbir şey. Orada hallederim."},a:"P"},
+    {t:{en:"Loosely sketched, with room to change my mind.",tr:"Kabaca taslak halinde, fikrimi değiştirmeye yer bırakarak."},a:"P"},
+    {t:{en:"Planned enough that nothing important can go wrong.",tr:"Önemli hiçbir şeyin ters gitmeyeceği kadar planlanmış."},a:"J"}
+  ]},
+  {q:{en:"You're working on something with a deadline. You…",tr:"Son teslim tarihi olan bir iş üzerinde çalışıyorsunuz. Siz…"},o:[
+    {t:{en:"Start early. Finish early. Then relax.",tr:"Erken başlıyorum. Erken bitiriyorum. Sonra rahatlıyorum."},a:"J"},
+    {t:{en:"Do the best work close to the deadline, under pressure.",tr:"En iyi işi son teslim tarihine yakın, baskı altında yapıyorum."},a:"P"},
+    {t:{en:"Break it into stages and hit each one.",tr:"Aşamalara bölüyorum ve her birini tamamlıyorum."},a:"J"},
+    {t:{en:"Wait for the right burst of energy, then do it all at once.",tr:"Doğru enerji patlamasını bekliyorum, sonra hepsini bir kerede yapıyorum."},a:"P"}
+  ]},
+  {q:{en:"A friend changes plans at the last minute. You…",tr:"Bir arkadaşınız son anda planları değiştiriyor. Siz…"},o:[
+    {t:{en:"Adjust, but I was looking forward to the original plan.",tr:"Uyum sağlıyorum ama orijinal planı dört gözle bekliyordum."},a:"J"},
+    {t:{en:"Love it. The new plan is probably better.",tr:"Bayılıyorum. Yeni plan muhtemelen daha iyi."},a:"P"},
+    {t:{en:"Fine, but now I need to re-plan the rest of the day.",tr:"Tamam, ama şimdi günün geri kalanını yeniden planlamam lazım."},a:"J"},
+    {t:{en:"Honestly? Plans are just suggestions anyway.",tr:"Dürüst olmak gerekirse? Planlar zaten sadece öneri."},a:"P"}
+  ]},
+  {q:{en:"Your desk or workspace right now is…",tr:"Şu anda masanız ya da çalışma alanınız…"},o:[
+    {t:{en:"Tidy enough that I could find anything in five seconds.",tr:"Beş saniyede herhangi bir şeyi bulabileceğim kadar düzenli."},a:"J"},
+    {t:{en:"Organized chaos, but I know exactly where everything is.",tr:"Düzenli kaos, ama her şeyin nerede olduğunu tam olarak biliyorum."},a:"P"},
+    {t:{en:"Clear, because I can't think in a mess.",tr:"Temiz, çünkü dağınıklıkta düşünemiyorum."},a:"J"},
+    {t:{en:"A museum of half-finished projects. I love it here.",tr:"Yarım kalmış projeler müzesi. Burada olmayı seviyorum."},a:"P"}
+  ]},
+  {q:{en:"You meet someone interesting. Your instinct is to…",tr:"İlginç biriyle tanıştınız. İçgüdünüz…"},o:[
+    {t:{en:"Figure out when we can see each other again, concretely.",tr:"Somut olarak bir daha ne zaman görüşebileceğimizi belirlemek."},a:"J"},
+    {t:{en:"Enjoy the moment. Let it become whatever it becomes.",tr:"Anın tadını çıkarmak. Neye dönüşürse dönüşsün."},a:"P"},
+    {t:{en:"Suggest a specific plan for next week.",tr:"Gelecek hafta için spesifik bir plan önermek."},a:"J"},
+    {t:{en:"Keep the conversation going and see where it lands.",tr:"Sohbeti sürdürmek ve nereye varacağını görmek."},a:"P"}
+  ]}
+];
+
+/* ============================================================
+   MBTI TYPE DESCRIPTIONS — original copy, generic archetypes
+   ============================================================ */
+const MBTI_TYPES = {
+  INTJ:{name:{en:"The Architect",tr:"Mimar"},
+    desc:{en:"You see systems where others see noise, and you'd rather build the future than describe the present. You're comfortable being the only person in the room who planned three moves ahead — and mildly annoyed when nobody noticed. Your weakness is people; not because you don't care, but because you'd rather debug a problem than a feeling.",
+      tr:"Başkalarının gürültü gördüğü yerde sistemler görüyorsunuz ve şimdiyi tarif etmektense geleceği inşa etmeyi tercih ediyorsunuz. Odadaki üç hamle ileriyi planlayan tek kişi olmaktan rahatsız değilsiniz — ve kimse fark etmediğinde hafifçe sinirleniyorsunuz. Zayıf noktanız insanlar; ilgilenmediğinizden değil, bir duyguyu değil bir sorunu hata ayıklamayı tercih ettiğinizden."}},
+  INTP:{name:{en:"The Logician",tr:"Mantıkçı"},
+    desc:{en:"You collect ideas the way other people collect mugs. You'll happily spend a weekend inside a single question and emerge with a framework nobody asked for but everyone needed. You're allergic to arbitrary rules and mildly allergic to finishing things. The world is a puzzle and you are, sincerely, still working on it.",
+      tr:"Başkalarının kupa koleksiyonu yaptığı gibi siz fikir topluyorsunuz. Tek bir soruyla bir hafta sonu geçirip kimsenin istemediği ama herkesin ihtiyaç duyduğu bir çerçeveyle çıkmaktan mutlu olursunuz. Keyfi kurallara alerjiniz var ve bitirmeye karşı hafif bir alerjiniz var. Dünya bir bulmaca ve içtenlikle hâlâ üzerinde çalışıyorsunuz."}},
+  ENTJ:{name:{en:"The Commander",tr:"Komutan"},
+    desc:{en:"You walk into chaos and see a to-do list. You're not bossy — you just have the clearest map and don't see why anyone would pretend otherwise. You respect competence, hate wasted time, and secretly worry you're the only adult in the room. You are, most days. You also have more warmth than you let anyone see.",
+      tr:"Kaosun içine girip bir yapılacaklar listesi görüyorsunuz. Otoriter değilsiniz — sadece en net haritaya sahipsiniz ve kimsenin aksini iddia etmesinin nedenini anlamıyorsunuz. Yetkinliğe saygı duyuyor, boşa harcanan zamandan nefret ediyor ve içten içe odadaki tek yetişkin siz olduğunuzdan endişeleniyorsunuz. Çoğu gün öylesiniz. Ayrıca kimseye göstermediğinizden daha fazla sıcaklığa sahipsiniz."}},
+  ENTP:{name:{en:"The Debater",tr:"Tartışmacı"},
+    desc:{en:"You have never met an assumption you didn't want to poke. You argue for sport, brainstorm for fun, and can defend three contradictory positions before lunch. You're the friend who makes people think. Your weakness is that starting things is more fun than finishing them — and you have a folder full of unfinished starts to prove it.",
+      tr:"Dürtmek istemediğiniz bir varsayımla hiç karşılaşmadınız. Spor olsun diye tartışır, eğlence olsun diye beyin fırtınası yapar ve öğle yemeğinden önce üç çelişkili pozisyonu savunabilirsiniz. İnsanlara düşündüren arkadaşsınız. Zayıf noktanız, bir şeye başlamanın onu bitirmekten daha eğlenceli olması — ve bunu kanıtlayan yarım kalmış başlangıçlarla dolu bir klasörünüz var."}},
+  INFJ:{name:{en:"The Advocate",tr:"Savunucu"},
+    desc:{en:"You feel everything and say almost none of it. You read people like weather and quietly adjust your own forecast to make the room comfortable. You have convictions that run deep and a private vision of how things could be. Your weakness is that you give so much of yourself away that you forget to check the balance.",
+      tr:"Her şeyi hissediyor ve neredeyse hiçbirini söylemiyorsunuz. İnsanları hava durumu gibi okuyorsunuz ve odayı rahatlatmak için kendi tahmininizi sessizce ayarlıyorsunuz. Derinlere inen kanaatleriniz ve işlerin nasıl olabileceğine dair özel bir vizyonunuz var. Zayıf noktanız, kendinizden o kadar çok veriyorsunuz ki dengeyi kontrol etmeyi unutuyorsunuz."}},
+  INFP:{name:{en:"The Mediator",tr:"Arabulucu"},
+    desc:{en:"You keep an inner world that is richer than most people suspect, and you protect it fiercely. You believe in people before they believe in themselves, and you notice beauty in small, specific things. Your weakness is that the gap between your values and the real world can feel enormous — and you'd rather feel that ache than compromise.",
+      tr:"Çoğu insanın tahmin ettiğinden daha zengin bir iç dünya taşıyorsunuz ve onu şiddetle koruyorsunuz. İnsanlar kendilerine inanmadan önce siz onlara inanıyorsunuz ve güzelliği küçük, spesifik şeylerde fark ediyorsunuz. Zayıf noktanız, değerlerinizle gerçek dünya arasındaki uçurumun muazzam hissedebilmesi — ve siz o sızıyı hissetmeyi taviz vermeye tercih ediyorsunuz."}},
+  ENFJ:{name:{en:"The Protagonist",tr:"Öncü"},
+    desc:{en:"You are the person other people call when they need to hear the truth wrapped in warmth. You lead by making people feel seen, and you have an uncanny sense of what a group needs before the group knows it. Your weakness is overcommitment — you say yes because you can, then wonder why you're exhausted.",
+      tr:"İnsanların gerçeği sıcaklıkla sarılı duymaya ihtiyaç duyduklarında aradıkları kişisiniz. İnsanlara görüldüklerini hissettirerek liderlik ediyorsunuz ve bir grubun neye ihtiyacı olduğunu grup bilmeden önce sezen nadir insanlardansınız. Zayıf noktanız aşırı taahhüt — yapabildiğiniz için evet diyorsunuz, sonra neden tükendiğinizi merak ediyorsunuz."}},
+  ENFP:{name:{en:"The Campaigner",tr:"Kampanyacı"},
+    desc:{en:"You bring a kind of contagious aliveness to everything you touch, and you genuinely believe the best about people until proven otherwise. You have a thousand ideas and the enthusiasm of someone who has never met a bad one. Your weakness is that you're always starting something new — and rarely the same thing twice.",
+      tr:"Dokunduğunuz her şeye bulaşıcı bir canlılık getiriyorsunuz ve aksi kanıtlanana kadar insanlar hakkında gerçekten en iyisini düşünüyorsunuz. Bin tane fikriniz var ve hiç kötü bir fikirle karşılaşmamış biri kadar coşkunuz var. Zayıf noktanız, her zaman yeni bir şeye başlamanız — ve nadiren aynı şeye iki kez."}},
+  ISTJ:{name:{en:"The Logistician",tr:"Lojistikçi"},
+    desc:{en:"You are the person whose word is a fact and whose calendar is a promise. You do the thing, on time, done right, and you'd rather be quietly dependable than loudly impressive. You're not rigid — you just believe that rules exist for reasons, and someone should remember them. That someone is you.",
+      tr:"Sözü bir olgu, takvimi bir söz olan kişisiniz. İşi zamanında ve doğru yaparsınız ve yüksek sesle etkileyici olmaktansa sessizce güvenilir olmayı tercih edersiniz. Katı değilsiniz — sadece kuralların nedenleri olduğuna ve birinin onları hatırlaması gerektiğine inanıyorsunuz. O birisi sizsiniz."}},
+  ISFJ:{name:{en:"The Defender",tr:"Koruyucu"},
+    desc:{en:"You remember the details other people forget — allergies, birthdays, the thing someone said they were worried about last month. You take care of people so quietly that sometimes they forget to take care of you. Your weakness is that you'll say 'I'm fine' when you're not, because asking for help feels like a burden.",
+      tr:"Başkalarının unuttuğu detayları hatırlıyorsunuz — alerjiler, doğum günleri, birinin geçen ay endişelendiğini söylediği şey. İnsanlarla o kadar sessiz ilgileniyorsunuz ki bazen sizinle ilgilenmeyi unutuyorlar. Zayıf noktanız, iyi olmadığınızda 'iyiyim' demeniz, çünkü yardım istemek yük gibi hissettiriyor."}},
+  ESTJ:{name:{en:"The Executive",tr:"Yönetici"},
+    desc:{en:"You believe that things get done when someone makes them get done, and you're willing to be that someone. You have strong opinions about how the group should run and a low tolerance for meetings that could have been an email. Your weakness is that you call it 'direct' when it lands as 'harsh.'",
+      tr:"Birinin yapılmasını sağladığında işlerin yapıldığına inanıyorsunuz ve o birisi olmaya hazırsınız. Grubun nasıl yönetilmesi gerektiği konusunda güçlü görüşleriniz var ve e-posta olabilecek toplantılara karşı toleransınız düşük. Zayıf noktanız, 'sert' olarak düştüğünde buna 'doğrudan' diyorsunuz."}},
+  ESFJ:{name:{en:"The Consul",tr:"Konsolos"},
+    desc:{en:"You are the glue of every group you're in, and you take that role seriously. You host, you check in, you notice who's been quiet. You care what people think, not out of vanity, but because belonging matters to you deeply. Your weakness is that criticism lands harder than it should.",
+      tr:"İçinde bulunduğunuz her grubun tutkalısınız ve bu rolü ciddiye alıyorsunuz. Ev sahipliği yapar, nabız yoklar, kimin sessiz kaldığını fark edersiniz. İnsanların ne düşündüğünü önemsiyorsunuz, kibir yüzünden değil, çünkü aidiyet sizin için derinden önemli. Zayıf noktanız, eleştiri olması gerekenden daha sert dokunuyor."}},
+  ISTP:{name:{en:"The Virtuoso",tr:"Virtüöz"},
+    desc:{en:"You're at your best when something is broken, sharp, or moving, and everyone else has stepped back. You learn by doing, you distrust talk, and you've always got a tool or a fix in reach. You feel things deeply but rarely narrate them. Your weakness is that you'd rather disappear than explain.",
+      tr:"Bir şey bozuk, keskin ya da hareketli olduğunda ve herkes geri çekildiğinde en iyi halinizdesiniz. Yaparak öğrenir, konuşmaya güvenmez ve elinizin altında her zaman bir alet ya da bir çözüm bulundurursunuz. Derinden hissedersiniz ama nadiren anlatırsınız. Zayıf noktanız, açıklamaktansa kaybolmayı tercih ediyorsunuz."}},
+  ISFP:{name:{en:"The Adventurer",tr:"Maceracı"},
+    desc:{en:"You live in the present tense with more grace than most people manage, and you see beauty where others see ordinariness. You don't need to be the center of attention — you'd rather be quietly making something, or somewhere new, or both. Your weakness is that you avoid conflict long past the point where it would help.",
+      tr:"Şimdiki zamanda çoğu insanın başaramayacağı bir zarafetle yaşıyorsunuz ve başkalarının sıradanlık gördüğü yerde güzellik görüyorsunuz. İlgi odağı olmak zorunda değilsiniz — sessizce bir şey yapmayı ya da yeni bir yerde olmayı, ya da ikisini birden tercih edersiniz. Zayıf noktanız, faydalı olacağı noktayı çoktan geçene kadar çatışmadan kaçınıyorsunuz."}},
+  ESTP:{name:{en:"The Entrepreneur",tr:"Girişimci"},
+    desc:{en:"You move first and refine later, and honestly, the strategy usually works. You're calm in chaos, charming under pressure, and allergic to meetings that could have been a walk-and-talk. You read rooms faster than most people read headlines. Your weakness is patience — with slow processes, and with slow people.",
+      tr:"Önce hareket eder, sonra iyileştirirsiniz ve dürüst olmak gerekirse bu strateji genelde işe yarar. Kaosta sakinsiniz, baskı altında çekicisiniz ve yürüyerek konuşulabilecek toplantılara alerjiniz var. Çoğu insanın manşetleri okuduğundan daha hızlı odaları okursunuz. Zayıf noktanız sabır — yavaş süreçlere ve yavaş insanlara karşı."}},
+  ESFP:{name:{en:"The Entertainer",tr:"Eğlendiren"},
+    desc:{en:"You are the reason the party has a heartbeat. You make people laugh, you make people comfortable, and you do it without trying. You live in color and you bring other people into that color with you. Your weakness is that the future has a hard time competing with how good right now feels.",
+      tr:"Partinin bir kalp atışı olmasının sebebi sizsiniz. İnsanları güldürüyor, rahatlatıyorsunuz ve bunu çabalamadan yapıyorsunuz. Renkli yaşıyorsunuz ve diğer insanları da o renge dahil ediyorsunuz. Zayıf noktanız, şu anın bu kadar iyi hissettirmesiyle geleceğin rekabet etmekte zorlanması."}}
+};
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let lang = "en";
+let currentIndex = 0;
+let zodiacScores = {};
+let zodiacLastAt = {};
+let mbtiScores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+
+const SEQUENCE = [
+  ...INTAKE.map(item => ({ kind:"intake", data:item })),
+  ...ZODIAC_QUIZ.map(item => ({ kind:"zodiac", data:item })),
+  ...MBTI_QUIZ.map(item => ({ kind:"mbti", data:item }))
+];
+
+function resetState(){
+  currentIndex = 0;
+  zodiacScores = {};
+  zodiacLastAt = {};
+  for (const k in SIGNS){ zodiacScores[k] = 0; zodiacLastAt[k] = -1; }
+  mbtiScores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+}
+
+/* ============================================================
+   DOM
+   ============================================================ */
+const el = {
+  brandText: document.getElementById("brand-text"),
+  appTitle: document.getElementById("app-title"),
+  appSubtitle: document.getElementById("app-subtitle"),
+  progressRow: document.getElementById("progress-row"),
+  progressLabel: document.getElementById("progress-label"),
+  progressPct: document.getElementById("progress-pct"),
+  barWrap: document.getElementById("bar-wrap"),
+  barFill: document.getElementById("bar-fill"),
+  content: document.getElementById("content"),
+  thinking: document.getElementById("thinking"),
+  thinkingText: document.getElementById("thinking-text"),
+  pulse: document.getElementById("pulse"),
+  langEn: document.getElementById("lang-en"),
+  langTr: document.getElementById("lang-tr")
+};
+const t = (key) => I18N[lang][key];
+
+/* ============================================================
+   LANGUAGE
+   ============================================================ */
+function setLang(next){
+  if (lang === next) return;
+  lang = next;
+  el.langEn.setAttribute("aria-pressed", String(lang === "en"));
+  el.langTr.setAttribute("aria-pressed", String(lang === "tr"));
+  document.documentElement.lang = lang;
+  el.brandText.textContent = t("brand");
+  el.appTitle.textContent = t("title");
+  el.appSubtitle.textContent = t("subtitle");
+  if (currentIndex < SEQUENCE.length) renderQuestion();
+  else showResult();
+}
+el.langEn.addEventListener("click", () => setLang("en"));
+el.langTr.addEventListener("click", () => setLang("tr"));
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function getLeadingSign(){
+  let max = -Infinity, leader = null;
+  for (const k in zodiacScores){
+    if (zodiacScores[k] > max){ max = zodiacScores[k]; leader = k; }
+  }
+  return max === 0 ? null : leader;
+}
+function updateThinking(){
+  const item = SEQUENCE[currentIndex];
+  const leader = getLeadingSign();
+  if (item && item.kind === "mbti"){
+    const e = mbtiScores.E, i = mbtiScores.I;
+    const s = mbtiScores.S, n = mbtiScores.N;
+    const tt = mbtiScores.T, f = mbtiScores.F;
+    const j = mbtiScores.J, p = mbtiScores.P;
+    const partial =
+      (e >= i ? "E" : "I") + (s >= n ? "S" : "N") + (tt >= f ? "T" : "F") + (j >= p ? "J" : "P");
+    el.thinkingText.innerHTML = `${t("thinkingPrefix")} <b>${partial}</b>`;
+    el.pulse.classList.remove("done");
+    return;
+  }
+  if (!leader){
+    el.thinkingText.textContent = t("thinkingEmpty");
+    el.pulse.classList.remove("done");
+    return;
+  }
+  const name = SIGNS[leader].name[lang];
+  const glyph = SIGNS[leader].glyph;
+  el.thinkingText.innerHTML = `${t("thinkingPrefix")} <b>${glyph} ${name}</b>`;
+  el.pulse.classList.remove("done");
+}
+function updateProgress(){
+  const total = SEQUENCE.length;
+  const pct = Math.round((currentIndex / total) * 100);
+  el.progressLabel.textContent = `${t("question")} ${currentIndex + 1} ${t("of")} ${total}`;
+  el.progressPct.textContent = `${pct}%`;
+  el.barFill.style.width = `${pct}%`;
+  el.barWrap.setAttribute("aria-valuenow", String(pct));
+}
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+function renderQuestion(){
+  const item = SEQUENCE[currentIndex];
+  const q = item.data;
+
+  el.progressRow.hidden = false;
+  el.barWrap.hidden = false;
+  el.thinking.hidden = false;
+  updateProgress();
+  updateThinking();
+
+  let sectionLabel;
+  if (item.kind === "intake") sectionLabel = t("sectionIntake");
+  else if (item.kind === "zodiac") sectionLabel = t("sectionZodiac");
+  else sectionLabel = t("sectionMbti");
+
+  const optsHtml = q.o.map((opt, i) =>
+    `<button class="opt" type="button" data-idx="${i}">${opt.t[lang]}</button>`
+  ).join("");
+
+  el.content.innerHTML = `
+    <span class="section-tag">${sectionLabel}</span>
+    <h2 class="q" id="q-heading">${q.q[lang]}</h2>
+    <div class="opts" role="group" aria-labelledby="q-heading">${optsHtml}</div>
+  `;
+
+  el.content.querySelectorAll(".opt").forEach(btn =>
+    btn.addEventListener("click", handleAnswer)
+  );
+}
+
+/* ============================================================
+   ANSWER
+   ============================================================ */
+function handleAnswer(e){
+  const btn = e.currentTarget;
+  const idx = parseInt(btn.dataset.idx, 10);
+  const item = SEQUENCE[currentIndex];
+  const chosen = item.data.o[idx];
+
+  el.content.querySelectorAll(".opt").forEach(b => b.disabled = true);
+
+  if (item.kind === "intake"){
+    zodiacScores[chosen.p] += 2;
+    zodiacScores[chosen.s] += 1;
+    zodiacLastAt[chosen.p] = currentIndex;
+  } else if (item.kind === "zodiac"){
+    zodiacScores[chosen.s] += 1;
+    zodiacLastAt[chosen.s] = currentIndex;
+  } else {
+    mbtiScores[chosen.a] += 1;
+  }
+
+  currentIndex++;
+
+  if (currentIndex < SEQUENCE.length){
+    setTimeout(() => {
+      renderQuestion();
+      el.content.classList.remove("fade");
+      void el.content.offsetWidth;
+      el.content.classList.add("fade");
+    }, 180);
+  } else {
+    setTimeout(showResult, 220);
+  }
+}
+
+/* ============================================================
+   RESULT
+   ============================================================ */
+function getTopSign(){
+  let max = -Infinity, candidates = [];
+  for (const k in zodiacScores){
+    const v = zodiacScores[k];
+    if (v > max){ max = v; candidates = [k]; }
+    else if (v === max) candidates.push(k);
+  }
+  if (candidates.length === 1) return candidates[0];
+  candidates.sort((a,b) => {
+    if (zodiacLastAt[b] !== zodiacLastAt[a]) return zodiacLastAt[b] - zodiacLastAt[a];
+    return a.localeCompare(b);
+  });
+  return candidates[0];
+}
+function getMbtiType(){
+  const type =
+    (mbtiScores.E >= mbtiScores.I ? "E" : "I") +
+    (mbtiScores.S >= mbtiScores.N ? "S" : "N") +
+    (mbtiScores.T >= mbtiScores.F ? "T" : "F") +
+    (mbtiScores.J >= mbtiScores.P ? "J" : "P");
+  return type;
+}
+function axisPair(a, b, labelA, labelB){
+  const va = mbtiScores[a], vb = mbtiScores[b];
+  const total = va + vb || 1;
+  const pctA = Math.round((va / total) * 100);
+  const pctB = 100 - pctA;
+  return { labelA, labelB, pctA, pctB };
+}
+function bridgeText(zodiacKey, mbtiType){
+  const s = SIGNS[zodiacKey];
+  const sun = s.name[lang];
+  const m = mbtiType;
+  const templates = {
+    en:{
+      intro:`Your ${sun} energy describes how you show up. Your ${m} type describes how you think and decide. Put together, the picture gets specific.`,
+      lines:[
+        `You lead with the emotional weather of ${sun} and process the world through the framework of ${m}.`,
+        `When ${sun}'s impulse and ${m}'s instinct agree, you're unstoppable. When they don't, you feel the tug.`,
+        `The person your friends recognize is the ${sun}. The person you are at 3am is the ${m}.`,
+        `Most people see the ${sun}. The ones who know you see the ${m}.`
+      ]
+    },
+    tr:{
+      intro:`${sun} enerjiniz nasıl göründüğünüzü anlatıyor. ${m} tipiniz nasıl düşündüğünüzü ve karar verdiğinizi anlatıyor. Bir araya geldiklerinde tablo netleşiyor.`,
+      lines:[
+        `${sun}'ın duygusal havasıyla öne çıkıyor ve dünyayı ${m} çerçevesiyle işliyorsunuz.`,
+        `${sun}'ın dürtüsü ile ${m}'in içgüdüsü aynı fikirde olduğunda durdurulamazsınız. Olmadığında aradaki çekişi hissedersiniz.`,
+        `Arkadaşlarınızın tanıdığı kişi ${sun}. Gece 03:00'te olduğunuz kişi ${m}.`,
+        `Çoğu insan ${sun}'ı görür. Sizi tanıyanlar ${m}'i görür.`
+      ]
+    }
+  };
+  const pack = templates[lang];
+  // Pick a bridge line deterministically from type hash
+  const seed = (zodiacKey + mbtiType).split("").reduce((a,c)=>a + c.charCodeAt(0), 0);
+  const line = pack.lines[seed % pack.lines.length];
+  return `<b>${t("bridgePrefix")}</b> ${pack.intro} ${line}`;
+}
+
+function showResult(){
+  const zKey = getTopSign();
+  const z = SIGNS[zKey];
+  const mKey = getMbtiType();
+  const m = MBTI_TYPES[mKey];
+  const total = SEQUENCE.length;
+
+  el.progressRow.hidden = false;
+  el.barWrap.hidden = false;
+  el.barFill.style.width = "100%";
+  el.progressLabel.textContent = `${t("question")} ${total} ${t("of")} ${total}`;
+  el.progressPct.textContent = "100%";
+  el.barWrap.setAttribute("aria-valuenow", "100");
+
+  el.thinking.hidden = false;
+  el.thinkingText.innerHTML = `${t("thinkingDone")} <b>${z.glyph} ${z.name[lang]} · ${mKey}</b>`;
+  el.pulse.classList.add("done");
+
+  const ePair = axisPair("E","I", t("axesE"), t("axesI"));
+  const sPair = axisPair("S","N", t("axesS"), t("axesN"));
+  const tPair = axisPair("T","F", t("axesT"), t("axesF"));
+  const jPair = axisPair("J","P", t("axesJ"), t("axesP"));
+
+  const axesRows = [ePair, sPair, tPair, jPair].map(p => {
+    const leading = p.pctA >= 50 ? p.labelA : p.labelB;
+    const pct = p.pctA >= 50 ? p.pctA : p.pctB;
+    return `<div class="row"><span>${p.labelA} / ${p.labelB}</span><span>${leading} · ${pct}%</span></div>`;
+  }).join("");
+
+  el.content.innerHTML = `
+    <div class="result">
+      <div class="zodiac-block">
+        <div class="section-tag">${t("zodiacLabel")}</div>
+        <div class="glyph" aria-hidden="true">${z.glyph}</div>
+        <h1 class="sign-name">${z.name[lang]}</h1>
+        <div class="dates">${z.dates[lang]}</div>
+        <p class="verdict">${z.verdict[lang]}</p>
+        <div class="traits">
+          ${z.traits[lang].map(tr => `<span class="chip">${tr}</span>`).join("")}
+        </div>
+        <p class="meta-line"><b>${t("bestMatch")}:</b> ${z.match[lang]}</p>
+        <p class="meta-line"><b>${t("shadowSide")}:</b> ${z.shadow[lang]}</p>
+      </div>
+
+      <div class="mbti-block">
+        <div class="mbti-label">${t("mbtiLabel")}</div>
+        <div class="mbti-type">${mKey}</div>
+        <p class="mbti-name">${m.name[lang]}</p>
+        <div class="mbti-axes">${axesRows}</div>
+        <p class="mbti-desc">${m.desc[lang]}</p>
+      </div>
+
+      <div class="bridge">${bridgeText(zKey, mKey)}</div>
+      <p class="disclaimer">${t("disclaimer")}</p>
+
+      <button class="cta" type="button" id="restart">${t("startOver")}</button>
+    </div>
+  `;
+
+  document.getElementById("restart").addEventListener("click", () => {
+    resetState();
+    el.thinking.hidden = false;
+    el.pulse.classList.remove("done");
+    renderQuestion();
+  });
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+resetState();
+renderQuestion();
+</script>
+</body>
+</html>
