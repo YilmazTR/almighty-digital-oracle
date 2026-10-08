@@ -1,0 +1,146 @@
+[
+  {"q":{"en":"It's 11:47pm. Your phone buzzes. Who are you hoping it is?","tr":"Saat 23:47. Telefonunuz titriyor. Kimin yazdığını umuyorsunuz?"},"o":[
+    {"t":{"en":"Your ex, finally texting back. You have a speech prepared.","tr":"Eski sevgiliniz, sonunda cevap yazıyor. Hazırda bir konuşmanız var."},"s":"aries"},
+    {"t":{"en":"Nobody. You're mid-binge and don't want to know.","tr":"Kimse. Dizi maratonunun ortasındasınız ve bilmek istemiyorsunuz."},"s":"taurus"},
+    {"t":{"en":"Anyone, honestly — you'll reply to all three chats at once.","tr":"Açıkçası herhangi biri — üç sohbete aynı anda cevap yazacaksınız."},"s":"gemini"},
+    {"t":{"en":"Your best friend. They sounded off earlier and you're worried.","tr":"En yakın arkadaşınız. Bugün sesi tuhaf çıktı ve endişelisiniz."},"s":"cancer"}
+  ]},
+  {"q":{"en":"Pick a crime. We're keeping this between us and the stars.","tr":"Bir suç seçin. Bu, sizinle yıldızlar arasında kalsın."},"o":[
+    {"t":{"en":"Grand theft of a spotlight. Any spotlight.","tr":"Büyük çapta spot ışığı hırsızlığı. Herhangi bir spot."},"s":"leo"},
+    {"t":{"en":"Tax evasion, but perfectly organized and cross-referenced.","tr":"Vergi kaçakçılığı, ama mükemmel organize ve çapraz referanslı."},"s":"virgo"},
+    {"t":{"en":"Perjury to protect a friend's vibe.","tr":"Bir arkadaşınızın modunu korumak için yalancı şahitlik."},"s":"libra"},
+    {"t":{"en":"Arson. Emotionally. Metaphorically. Mostly.","tr":"Kundakçılık. Duygusal. Mecazi. Çoğunlukla."},"s":"scorpio"}
+  ]},
+  {"q":{"en":"A wizard offers to make you devastatingly attractive, but you must give up one thing. Which?","tr":"Bir büyücü sizi yıkıcı derecede çekici yapmayı teklif ediyor, ama bir şeyden vazgeçmeniz gerekiyor. Hangisi?"},"o":[
+    {"t":{"en":"My luggage. Never needed it.","tr":"Bavulum. Hiç gerek duymadım."},"s":"sagittarius"},
+    {"t":{"en":"My free time. That was already gone.","tr":"Boş zamanım. O zaten yoktu."},"s":"capricorn"},
+    {"t":{"en":"My humanity. Fascinating offer, tell me more.","tr":"İnsanlığım. İlginç bir teklif, devam edin."},"s":"aquarius"},
+    {"t":{"en":"My bones. I'd float instead. Sounds nice.","tr":"Kemiklerim. Bunun yerine süzülürüm. Kulağa hoş geliyor."},"s":"pisces"}
+  ]},
+  {"q":{"en":"You're trapped in an elevator for 4 hours. What happens?","tr":"Asansörde 4 saat mahsur kaldınız. Ne oluyor?"},"o":[
+    {"t":{"en":"You try to pry the doors open at minute nine.","tr":"Dokuzuncu dakikada kapıları kanırtmaya başlıyorsunuz."},"s":"aries"},
+    {"t":{"en":"You brought snacks. You are thriving. Leave me.","tr":"Yanınızda atıştırmalık getirmişsiniz. Keyfiniz yerinde. Beni rahat bırakın."},"s":"taurus"},
+    {"t":{"en":"You interview every passenger and learn their trauma.","tr":"Her yolcuyu sorguya çekiyor ve travmalarını öğreniyorsunuz."},"s":"gemini"},
+    {"t":{"en":"You comfort the stranger having a panic attack.","tr":"Panik atak geçiren yabancıyı teselli ediyorsunuz."},"s":"cancer"}
+  ]},
+  {"q":{"en":"What's your most genuinely toxic trait?","tr":"En gerçekten toksik özelliğiniz ne?"},"o":[
+    {"t":{"en":"Needing applause. Constantly. Or at least a thumbs-up.","tr":"Alkışa ihtiyaç duymak. Sürekli. Ya da en azından bir başparmak."},"s":"leo"},
+    {"t":{"en":"Correcting people mid-sentence. Compassionately.","tr":"İnsanları cümle ortasında düzeltmek. Şefkatle."},"s":"virgo"},
+    {"t":{"en":"Agreeing to everything, then resenting it quietly.","tr":"Her şeye evet demek, sonra sessizce içerlemek."},"s":"libra"},
+    {"t":{"en":"Keeping score in a notebook you'll never show anyone.","tr":"Kimseye göstermeyeceğiniz bir defterde skor tutmak."},"s":"scorpio"}
+  ]},
+  {"q":{"en":"Your group chat is planning a trip. Your role is…","tr":"Grup sohbetiniz bir gezi planlıyor. Sizin rolünüz…"},"o":[
+    {"t":{"en":"Suggesting we just drive and figure it out.","tr":"'Arabaya atlayıp gidelim, gerisini hallederiz' demek."},"s":"sagittarius"},
+    {"t":{"en":"Confirming the deposit, the insurance, and the group chat rules.","tr":"Depozitoyu, sigortayı ve grup sohbeti kurallarını onaylamak."},"s":"capricorn"},
+    {"t":{"en":"Proposing a completely different trip nobody asked for.","tr":"Kimsenin istemediği tamamen farklı bir gezi önermek."},"s":"aquarius"},
+    {"t":{"en":"Sending a mood board and then going quiet for two days.","tr":"Bir mood board gönderip iki gün sessizliğe gömülmek."},"s":"pisces"}
+  ]},
+  {"q":{"en":"A stranger is crying on a park bench. You…","tr":"Bir yabancı park bankında ağlıyor. Siz…"},"o":[
+    {"t":{"en":"Sit down and ask what happened. Directly. No preamble.","tr":"Yanına oturup ne olduğunu soruyorsunuz. Doğrudan. Girişsiz."},"s":"aries"},
+    {"t":{"en":"Buy them a pastry and leave it beside them without a word.","tr":"Onlara bir hamur işi alıp tek kelime etmeden yanına bırakıyorsunuz."},"s":"taurus"},
+    {"t":{"en":"Ask a question so specific it makes them laugh first.","tr":"O kadar spesifik bir soru soruyorsunuz ki önce gülüyorlar."},"s":"gemini"},
+    {"t":{"en":"Sit quietly nearby until they're ready to talk.","tr":"Konuşmaya hazır olana kadar sessizce yakınlarında oturuyorsunuz."},"s":"cancer"}
+  ]},
+  {"q":{"en":"You're at a party and the host says 'make yourself at home.' You…","tr":"Bir partidesiniz ve ev sahibi 'kendi eviniz gibi davranın' diyor. Siz…"},"o":[
+    {"t":{"en":"End up telling a story to a circle of six strangers.","tr":"Altı yabancıdan oluşan bir çembere hikâye anlatırken buluyorsunuz kendinizi."},"s":"leo"},
+    {"t":{"en":"Reorganize the snack table because it's chaos.","tr":"Atıştırmalık masasını yeniden düzenliyorsunuz çünkü kaos var."},"s":"virgo"},
+    {"t":{"en":"Compliment the host's playlist and mediate a mild argument.","tr":"Ev sahibinin çalma listesini övüp hafif bir tartışmayı yatıştırıyorsunuz."},"s":"libra"},
+    {"t":{"en":"Find the one person with an interesting secret and stay there.","tr":"İlginç bir sırrı olan tek kişiyi bulup orada kalıyorsunuz."},"s":"scorpio"}
+  ]},
+  {"q":{"en":"Your friend asks you to review their creative work. You…","tr":"Arkadaşınız yaratıcı işini değerlendirmenizi istiyor. Siz…"},"o":[
+    {"t":{"en":"Tell them to trust the weird part and go further.","tr":"'Tuhaf kısma güven ve daha ileri git' diyorsunuz."},"s":"sagittarius"},
+    {"t":{"en":"Give a clear, structured critique with next steps.","tr":"Net, yapılandırılmış bir eleştiri ve sonraki adımlarla geliyorsunuz."},"s":"capricorn"},
+    {"t":{"en":"Question the whole premise. Lovingly. Then help rebuild.","tr":"Tüm öncülü sorguluyorsunuz. Sevgiyle. Sonra yeniden inşa ediyorsunuz."},"s":"aquarius"},
+    {"t":{"en":"Feel it deeply, then describe the feeling in a paragraph.","tr":"Derinden hissediyor, sonra hissi bir paragrafla anlatıyorsunuz."},"s":"pisces"}
+  ]},
+  {"q":{"en":"You're offered a job that's prestigious but boring. You…","tr":"Prestijli ama sıkıcı bir iş teklifi alıyorsunuz. Siz…"},"o":[
+    {"t":{"en":"Take it, then quit in three months for something wilder.","tr":"Kabul ediyorsunuz, üç ay sonra daha çılgın bir şey için ayrılıyorsunuz."},"s":"aries"},
+    {"t":{"en":"Take it. It pays for the life you actually want.","tr":"Kabul ediyorsunuz. Gerçekten istediğiniz hayatı finanse ediyor."},"s":"taurus"},
+    {"t":{"en":"Take it and start three side projects immediately.","tr":"Kabul edip hemen üç yan projeye başlıyorsunuz."},"s":"gemini"},
+    {"t":{"en":"Take it if it means stability for the people you love.","tr":"Sevdikleriniz için istikrar demekse kabul ediyorsunuz."},"s":"cancer"}
+  ]},
+  {"q":{"en":"It's 3am and you can't sleep. Your brain is…","tr":"Saat 03:00 ve uyuyamıyorsunuz. Aklınız…"},"o":[
+    {"t":{"en":"Writing an acceptance speech for an award you'll never win.","tr":"Asla kazanamayacağınız bir ödül için teşekkür konuşması yazıyor."},"s":"leo"},
+    {"t":{"en":"Making a mental list of everything you did wrong today.","tr":"Bugün yaptığınız tüm yanlışların listesini çıkarıyor."},"s":"virgo"},
+    {"t":{"en":"Wondering if that thing you said landed wrong.","tr":"Söylediğiniz o şeyin yanlış mı düştüğünü düşünüyor."},"s":"libra"},
+    {"t":{"en":"Cataloging every secret you've ever been told.","tr":"Size söylenmiş tüm sırları katalogluyor."},"s":"scorpio"}
+  ]},
+  {"q":{"en":"You're asked to describe your relationship with rules. You say…","tr":"Kurallarla ilişkinizi anlatmanız isteniyor. Şöyle diyorsunuz…"},"o":[
+    {"t":{"en":"Rules are suggestions. Strong suggestions. That I ignore.","tr":"Kurallar öneridir. Güçlü öneriler. Görmezden geldiğim."},"s":"sagittarius"},
+    {"t":{"en":"I follow them. It's a stepping stone. I have a five-year plan.","tr":"Uyuyorum. Bu bir basamak. Beş yıllık bir planım var."},"s":"capricorn"},
+    {"t":{"en":"I follow the spirit, not the letter. And I'll argue about it.","tr":"Lafzına değil ruhuna uyarım. Ve bunu tartışırım."},"s":"aquarius"},
+    {"t":{"en":"I follow them when they protect people. Otherwise, no.","tr":"İnsanları koruyorsa uyarım. Aksi halde hayır."},"s":"pisces"}
+  ]},
+  {"q":{"en":"Someone asks what you did last Tuesday. Your honest answer is…","tr":"Biri geçen Salı ne yaptığınızı soruyor. Dürüst cevabınız…"},"o":[
+    {"t":{"en":"I said I'd 'just stop by' somewhere and stayed for six hours. Classic me.","tr":"'Sadece uğrayacağım' dedim ve altı saat kaldım. Klasik ben."},"s":"aries"},
+    {"t":{"en":"I made a spreadsheet about my own habits and then ignored it.","tr":"Kendi alışkanlıklarım hakkında bir tablo yaptım, sonra görmezden geldim."},"s":"taurus"},
+    {"t":{"en":"I had four conversations I can't remember having, but I'm told I was hilarious.","tr":"Hatırlamadığım dört sohbet yaptım, ama çok komik olduğum söylendi."},"s":"gemini"},
+    {"t":{"en":"I texted three people to check on them and forgot to eat dinner.","tr":"Üç kişiye yazıp hallerini sordum ve akşam yemeğini unuttum."},"s":"cancer"}
+  ]},
+  {"q":{"en":"You're still annoyed about something minor from months ago. What is it?","tr":"Aylar önce olan küçük bir şeye hâlâ sinirlisiniz. Nedir?"},"o":[
+    {"t":{"en":"Someone didn't compliment a thing I did. I noticed. I remember.","tr":"Biri yaptığım bir şeyi övmedi. Fark ettim. Hatırlıyorum."},"s":"leo"},
+    {"t":{"en":"A restaurant brought the wrong side and I said it was fine. It was not fine.","tr":"Bir restoran yanlış garnitür getirdi ve 'sorun değil' dedim. Sorun değildi."},"s":"virgo"},
+    {"t":{"en":"A friend cancelled on me and I said 'no worries' with a period.","tr":"Bir arkadaşım iptal etti ve 'sorun yok.' yazdım. Noktayla."},"s":"libra"},
+    {"t":{"en":"I know something about someone. I will never say it. But I know it.","tr":"Biri hakkında bir şey biliyorum. Asla söylemeyeceğim. Ama biliyorum."},"s":"scorpio"}
+  ]},
+  {"q":{"en":"You cancel plans two hours before. Your actual reason is…","tr":"İki saat önce planları iptal ediyorsunuz. Gerçek sebebiniz…"},"o":[
+    {"t":{"en":"I found something more interesting to do. I feel zero guilt.","tr":"Daha ilginç bir şey buldum. Hiç suçluluk duymuyorum."},"s":"sagittarius"},
+    {"t":{"en":"I'm behind on a project I invented for myself. It matters.","tr":"Kendim için icat ettiğim bir projede gerideyim. Önemli."},"s":"capricorn"},
+    {"t":{"en":"I had a thought about a system and I need to follow it.","tr":"Bir sistem hakkında bir fikrim geldi ve peşinden gitmem lazım."},"s":"aquarius"},
+    {"t":{"en":"I'm tired and I can't explain it without sounding dramatic.","tr":"Yorgunum ve dramatik görünmeden açıklayamıyorum."},"s":"pisces"}
+  ]},
+  {"q":{"en":"What's in your bag right now, honestly?","tr":"Şu anda çantanızda ne var, dürüst olun."},"o":[
+    {"t":{"en":"Gym clothes I haven't used, a granola bar, and a lot of ambition.","tr":"Kullanmadığım spor kıyafetleri, bir granola bar ve bolca hırs."},"s":"aries"},
+    {"t":{"en":"Snacks, a book, a charger, and a backup charger.","tr":"Atıştırmalıklar, bir kitap, bir şarj aleti ve yedek şarj aleti."},"s":"taurus"},
+    {"t":{"en":"Three books, two notebooks, one of them has a to-do list for the other.","tr":"Üç kitap, iki defter; birinin içinde diğeri için yapılacaklar listesi var."},"s":"gemini"},
+    {"t":{"en":"A photo of someone I love, tissues, and something someone gave me years ago.","tr":"Sevdiğim birinin fotoğrafı, mendil ve birinin yıllar önce verdiği bir şey."},"s":"cancer"}
+  ]},
+  {"q":{"en":"Someone gives you a genuine compliment. Your honest internal response is…","tr":"Biri size içten bir iltifat ediyor. İçten içe dürüst tepkiniz…"},"o":[
+    {"t":{"en":"Obviously. But say more. What specifically?","tr":"Tabii ki. Ama devam edin. Tam olarak ne?"},"s":"leo"},
+    {"t":{"en":"Thank you — but also, I noticed three things wrong with what I did.","tr":"Teşekkürler — ama ayrıca yaptığım işte üç yanlış fark ettim."},"s":"virgo"},
+    {"t":{"en":"I smile and deflect and think about it for a week.","tr":"Gülümsüyorum, savuşturuyorum ve bir hafta boyunca düşünüyorum."},"s":"libra"},
+    {"t":{"en":"I clock exactly why they said it and file it away.","tr":"Neden söylediklerini tam olarak çözüp dosyalıyorum."},"s":"scorpio"}
+  ]},
+  {"q":{"en":"You're planning something with friends. What actually happens?","tr":"Arkadaşlarla bir şey planlıyorsunuz. Gerçekte ne oluyor?"},"o":[
+    {"t":{"en":"I book the thing, text 'no takebacks,' and it's done.","tr":"Yeri ayarlıyorum, 'iptal yok' yazıyorum, bitti."},"s":"sagittarius"},
+    {"t":{"en":"I make a doc, a budget, a contingency, and a color-coded calendar.","tr":"Bir belge, bir bütçe, bir B planı ve renk kodlu bir takvim hazırlıyorum."},"s":"capricorn"},
+    {"t":{"en":"I propose a completely different plan mid-conversation and now we're doing that.","tr":"Sohbetin ortasında tamamen farklı bir plan öneriyorum ve şimdi onu yapıyoruz."},"s":"aquarius"},
+    {"t":{"en":"I ask everyone what they want and then quietly do whatever's easiest for the group.","tr":"Herkese ne istediğini soruyorum, sonra grubun en kolayına geleni sessizce yapıyorum."},"s":"pisces"}
+  ]},
+  {"q":{"en":"You realize you hurt someone's feelings. You…","tr":"Birinin duygularını incittiğinizi fark ediyorsunuz. Siz…"},"o":[
+    {"t":{"en":"Call them immediately and say the whole thing, plainly.","tr":"Hemen arıyorum ve her şeyi olduğu gibi söylüyorum."},"s":"aries"},
+    {"t":{"en":"Give them space, then show up with food and a quiet apology.","tr":"Onlara alan veriyorum, sonra yemekle ve sessiz bir özürle geliyorum."},"s":"taurus"},
+    {"t":{"en":"Text a long, nuanced explanation that accidentally makes it worse.","tr":"Uzun, nüanslı bir açıklama yazıyorum ve istemeden daha kötü yapıyorum."},"s":"gemini"},
+    {"t":{"en":"Apologize, then spend three days worrying you apologized wrong.","tr":"Özür diliyorum, sonra üç gün yanlış özür dilediğim için endişeleniyorum."},"s":"cancer"}
+  ]},
+  {"q":{"en":"If someone read your last five text messages, they'd think you were…","tr":"Biri son beş mesajınızı okusa, sizin… olduğunuzu düşünürdü."},"o":[
+    {"t":{"en":"A motivational speaker with a caffeine problem.","tr":"Kafein problemi olan bir motivasyon konuşmacısı."},"s":"leo"},
+    {"t":{"en":"An editor who is quietly losing their mind.","tr":"Sessizce aklını kaybeden bir editör."},"s":"virgo"},
+    {"t":{"en":"Someone who says 'totally' a lot and means it every time.","tr":"Çok sık 'kesinlikle' diyen ve her seferinde ciddi olan biri."},"s":"libra"},
+    {"t":{"en":"A person who types the message, deletes it, and sends a shorter, colder one.","tr":"Mesajı yazıp silen ve daha kısa, daha soğuk bir tane gönderen biri."},"s":"scorpio"}
+  ]},
+  {"q":{"en":"A friend pitches a wild idea at 6pm on a Friday. You…","tr":"Bir arkadaşınız Cuma akşamı 18:00'de çılgın bir fikir ortaya atıyor. Siz…"},"o":[
+    {"t":{"en":"Say yes before they finish the sentence.","tr":"Cümlesini bitirmeden 'evet' diyorum."},"s":"sagittarius"},
+    {"t":{"en":"Ask for a plan, a budget, and a timeline by Sunday.","tr":"Pazara kadar bir plan, bir bütçe ve bir takvim istiyorum."},"s":"capricorn"},
+    {"t":{"en":"Say yes, then redesign the whole thing conceptually.","tr":"Evet diyorum, sonra bütün konsepti yeniden tasarlıyorum."},"s":"aquarius"},
+    {"t":{"en":"Say 'sounds fun' and immediately imagine the worst case.","tr":"'Kulağa eğlenceli geliyor' deyip hemen en kötü senaryoyu hayal ediyorum."},"s":"pisces"}
+  ]},
+  {"q":{"en":"You walk into a room full of strangers. Your first move is…","tr":"Yabancılarla dolu bir odaya giriyorsunuz. İlk hamleniz…"},"o":[
+    {"t":{"en":"Find the loudest person and out-loudest them.","tr":"En gürültülü kişiyi bulup ondan daha gürültülü oluyorum."},"s":"leo"},
+    {"t":{"en":"Find the host, thank them, and figure out the layout of the room.","tr":"Ev sahibini bulup teşekkür ediyorum ve odanın düzenini çözüyorum."},"s":"virgo"},
+    {"t":{"en":"Find the quietest person and ask them a real question.","tr":"En sessiz kişiyi bulup ona gerçek bir soru soruyorum."},"s":"libra"},
+    {"t":{"en":"Find the exit, then find the one person worth talking to.","tr":"Çıkışı buluyorum, sonra konuşmaya değer tek kişiyi buluyorum."},"s":"scorpio"}
+  ]},
+  {"q":{"en":"There's a message you typed and never sent. It says…","tr":"Yazıp hiç göndermediğiniz bir mesaj var. Şöyle diyor…"},"o":[
+    {"t":{"en":"Something honest that would change the friendship.","tr":"Arkadaşlığı değiştirecek kadar dürüst bir şey."},"s":"aries"},
+    {"t":{"en":"Something you decided wasn't worth the effort to argue about.","tr":"Tartışmaya değmeyeceğine karar verdiğiniz bir şey."},"s":"taurus"},
+    {"t":{"en":"Something you rewrote eleven times and gave up on.","tr":"On bir kez yeniden yazıp vazgeçtiğiniz bir şey."},"s":"gemini"},
+    {"t":{"en":"Something that would make someone cry if they read it.","tr":"Okusalar birini ağlatacak bir şey."},"s":"cancer"}
+  ]},
+  {"q":{"en":"Your ideal Saturday has…","tr":"İdeal bir Cumartesinizde şunlar var…"},"o":[
+    {"t":{"en":"A spontaneous road trip with no destination.","tr":"Hedefi olmayan spontane bir yol gezisi."},"s":"sagittarius"},
+    {"t":{"en":"A clean apartment, a good meal, and everything checked off.","tr":"Temiz bir daire, güzel bir yemek ve her şeyin üstü çizilmiş."},"s":"capricorn"},
+    {"t":{"en":"A weird podcast, a longer walk, and a thought you can't shake.","tr":"Tuhaf bir podcast, daha uzun bir yürüyüş ve kafanızdan atamadığınız bir düşünce."},"s":"aquarius"},
+    {"t":{"en":"Rain, a playlist, and a feeling you can't quite name.","tr":"Yağmur, bir çalma listesi ve tam adlandıramadığınız bir his."},"s":"pisces"}
+  ]}
+]

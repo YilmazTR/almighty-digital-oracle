@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fafafa">
+<title>Almighty Digital Oracle</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<noscript>
+  <div class="noscript">
+    <p>This quiz needs JavaScript enabled to run. Everything stays on your device.</p>
+  </div>
+</noscript>
+
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <img class="oracle-icon" src="assets/logo.svg" alt="" aria-hidden="true">
+      <span id="brand-text">Almighty Digital Oracle</span>
+    </div>
+    <div class="topbar-right">
+      <button type="button" class="ghost-btn" id="history-btn" hidden aria-label="History">
+        <span id="history-label">History</span>
+      </button>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" id="lang-en" aria-pressed="true">EN</button>
+        <button type="button" id="lang-tr" aria-pressed="false">TR</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="hero">
+      <img class="hero-icon" src="assets/logo.svg" alt="" aria-hidden="true">
+      <h1 class="title" id="app-title">Almighty Digital Oracle</h1>
+    </div>
+    <p class="subtitle" id="app-subtitle">Loading…</p>
+
+    <div class="progress-row" id="progress-row" hidden>
+      <span id="progress-label">Question 1 of 46</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="bar" id="bar-wrap" hidden role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Quiz progress">
+      <i id="bar-fill" style="width:0%"></i>
+    </div>
+
+    <div id="content" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="thinking" id="thinking" hidden>
+      <span class="pulse" id="pulse"></span>
+      <span class="txt" id="thinking-text"></span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span id="footer-storage"></span>
+    <span class="footer-sep">·</span>
+    <span>© Yilmaz</span>
+  </div>
+</div>
+
+<!-- History modal -->
+<div class="modal-backdrop" id="history-modal" hidden role="dialog" aria-modal="true" aria-labelledby="history-title">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="history-title">Your past readings</h2>
+      <button type="button" class="icon-btn" id="history-close" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body" id="history-body"></div>
+    <div class="modal-footer">
+      <button type="button" class="ghost-btn" id="export-btn">Export JSON</button>
+      <button type="button" class="danger-btn" id="wipe-btn">Delete all data</button>
+    </div>
+  </div>
+</div>
+
+<!-- Consent modal -->
+<div class="modal-backdrop" id="consent-modal" hidden role="dialog" aria-modal="true" aria-labelledby="consent-title">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="consent-title">Save your reading?</h2>
+    </div>
+    <div class="modal-body">
+      <p id="consent-copy">Your results can be saved on this device only. Nothing is sent to any server. You can delete everything at any time.</p>
+    </div>
+    <div class="modal-footer consent-actions">
+      <button type="button" class="ghost-btn" id="consent-no">Don't save</button>
+      <button type="button" class="cta" id="consent-yes">Save on this device</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast for share/save feedback -->
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>

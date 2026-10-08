@@ -1,0 +1,122 @@
+[
+  {"q":{"en":"A long week ends. Your ideal Friday night is…","tr":"Uzun bir hafta bitti. İdeal Cuma akşamınız…"},"o":[
+    {"t":{"en":"Out with people. The more, the louder, the better.","tr":"İnsanlarla dışarıda. Ne kadar kalabalık ve gürültülü olursa o kadar iyi."},"a":"E"},
+    {"t":{"en":"Home alone with a show and zero notifications.","tr":"Evde yalnız, bir diziyle ve sıfır bildirimle."},"a":"I"},
+    {"t":{"en":"One close friend, one good meal, deep conversation.","tr":"Tek bir yakın arkadaş, güzel bir yemek, derin bir sohbet."},"a":"I"},
+    {"t":{"en":"Whatever's happening — I'll find out when I get there.","tr":"Ne oluyorsa olsun — gidince öğrenirim."},"a":"E"}
+  ]},
+  {"q":{"en":"You're at a party where you know almost nobody. After an hour you feel…","tr":"Neredeyse kimseyi tanımadığınız bir partidesiniz. Bir saat sonra…"},"o":[
+    {"t":{"en":"Energized. I've met four people and started a debate.","tr":"Enerjik. Dört kişiyle tanıştım ve bir tartışma başlattım."},"a":"E"},
+    {"t":{"en":"Ready to leave. I came, I smiled, I'm done.","tr":"Gitmeye hazır. Geldim, gülümsedim, bitti."},"a":"I"},
+    {"t":{"en":"Trying to find the one person I can talk to for two hours.","tr":"İki saat konuşabileceğim tek kişiyi bulmaya çalışıyorum."},"a":"I"},
+    {"t":{"en":"Warm, chatty, and mildly sorry I have to go home eventually.","tr":"Sıcak, konuşkan ve bir noktada eve gitmek zorunda olduğum için hafif üzgün."},"a":"E"}
+  ]},
+  {"q":{"en":"You get big news — good or bad. Your first instinct is to…","tr":"Büyük bir haber aldınız — iyi ya da kötü. İlk içgüdünüz…"},"o":[
+    {"t":{"en":"Call someone immediately and say it out loud.","tr":"Hemen birini arayıp yüksek sesle söylemek."},"a":"E"},
+    {"t":{"en":"Sit with it quietly before telling anyone.","tr":"Kimseye söylemeden önce sessizce oturup düşünmek."},"a":"I"},
+    {"t":{"en":"Text one person who'll understand, then go about my day.","tr":"Anlayacak tek bir kişiye yazıp günüme devam etmek."},"a":"I"},
+    {"t":{"en":"Tell three people in the first ten minutes. Maybe four.","tr":"İlk on dakikada üç kişiye söylemek. Belki dört."},"a":"E"}
+  ]},
+  {"q":{"en":"A meeting runs long and turns into open discussion. You…","tr":"Bir toplantı uzadı ve açık tartışmaya dönüştü. Siz…"},"o":[
+    {"t":{"en":"Jump in with three points before the moment passes.","tr":"Fırsat kaçmadan üç noktayla atlıyorum."},"a":"E"},
+    {"t":{"en":"Wait, collect my thoughts, and speak once, well.","tr":"Bekliyorum, düşüncelerimi topluyorum ve bir kez, iyi konuşuyorum."},"a":"I"},
+    {"t":{"en":"Contribute when it's clearly my area, otherwise listen.","tr":"Açıkça benim alanımsa katkı veririm, yoksa dinlerim."},"a":"I"},
+    {"t":{"en":"Ask the question everyone else was thinking but didn't say.","tr":"Herkesin düşünüp de söylemediği soruyu soruyorum."},"a":"E"}
+  ]},
+  {"q":{"en":"You have a free Sunday and no plans. By evening, you…","tr":"Planı olmayan boş bir Pazar. Akşama doğru…"},"o":[
+    {"t":{"en":"Texted five people and ended up at a spontaneous dinner.","tr":"Beş kişiye yazdım ve spontane bir akşam yemeğinde buldum kendimi."},"a":"E"},
+    {"t":{"en":"Read, walked, cooked, and didn't say ten words out loud.","tr":"Okudum, yürüdüm, yemek yaptım ve on kelimeden fazla yüksek sesle konuşmadım."},"a":"I"},
+    {"t":{"en":"Got deep into one project and forgot to eat lunch.","tr":"Bir projeye daldım ve öğle yemeğini yemeyi unuttum."},"a":"I"},
+    {"t":{"en":"Ran into three people I know and had a great time doing it.","tr":"Tanıdığım üç kişiye rastladım ve bundan çok keyif aldım."},"a":"E"}
+  ]},
+  {"q":{"en":"You're told about a new idea at work. You immediately…","tr":"İş yerinde yeni bir fikir duyuyorsunuz. Hemen…"},"o":[
+    {"t":{"en":"Ask how it works in practice. Steps, timeline, owners.","tr":"Pratikte nasıl işleyeceğini soruyorum. Adımlar, takvim, sorumlular."},"a":"S"},
+    {"t":{"en":"Think about what it could become if we pushed it further.","tr":"Daha ileri götürürsek neye dönüşebileceğini düşünüyorum."},"a":"N"},
+    {"t":{"en":"Compare it to something similar that worked before.","tr":"Daha önce işe yarayan benzer bir şeye benzetiyorum."},"a":"S"},
+    {"t":{"en":"Wonder what it says about where the whole field is heading.","tr":"Bunun tüm alanın nereye gittiği hakkında ne söylediğini merak ediyorum."},"a":"N"}
+  ]},
+  {"q":{"en":"You're reading a book. What keeps you turning pages?","tr":"Bir kitap okuyorsunuz. Sizi sayfa çevirmeye iten ne?"},"o":[
+    {"t":{"en":"Vivid scenes and details I can picture exactly.","tr":"Tam olarak gözümde canlandırabildiğim canlı sahneler ve detaylar."},"a":"S"},
+    {"t":{"en":"Big ideas that reframe something I thought I knew.","tr":"Bildiğimi sandığım bir şeyi yeniden çerçeveleyen büyük fikirler."},"a":"N"},
+    {"t":{"en":"Characters whose choices feel real and specific.","tr":"Seçimleri gerçek ve spesifik hissettiren karakterler."},"a":"S"},
+    {"t":{"en":"Themes that make me think about my own life differently.","tr":"Kendi hayatımı farklı düşünmemi sağlayan temalar."},"a":"N"}
+  ]},
+  {"q":{"en":"You're giving directions to a friend. You…","tr":"Bir arkadaşınıza yol tarif ediyorsunuz. Siz…"},"o":[
+    {"t":{"en":"Name the streets, the turns, the landmarks.","tr":"Sokakları, dönüşleri, simge yapıları sayıyorum."},"a":"S"},
+    {"t":{"en":"Describe the general shape of the journey and the vibe.","tr":"Yolculuğun genel şeklini ve hissini tarif ediyorum."},"a":"N"},
+    {"t":{"en":"Say 'turn left at the place with the terrible parking.'","tr":"'Berbat otoparkı olan yerden sola dön' diyorum."},"a":"S"},
+    {"t":{"en":"Say 'you'll know it when you're almost there.'","tr":"'Neredeyse vardığında anlayacaksın' diyorum."},"a":"N"}
+  ]},
+  {"q":{"en":"You're planning a trip. What excites you most?","tr":"Bir gezi planlıyorsunuz. Sizi en çok ne heyecanlandırıyor?"},"o":[
+    {"t":{"en":"The specific places I'll eat and walk and see.","tr":"Yiyeceğim, yürüyeceğim ve göreceğim spesifik yerler."},"a":"S"},
+    {"t":{"en":"The version of myself I might become there.","tr":"Orada dönüşebileceğim kendim versiyonu."},"a":"N"},
+    {"t":{"en":"Booking the details so nothing goes wrong.","tr":"Hiçbir şeyin ters gitmemesi için detayları ayarlamak."},"a":"S"},
+    {"t":{"en":"Leaving room for the unplanned and unexpected.","tr":"Planlanmamış ve beklenmedik şeylere yer bırakmak."},"a":"N"}
+  ]},
+  {"q":{"en":"Someone tells you a story that doesn't quite add up. You…","tr":"Birisi tam oturmayan bir hikâye anlatıyor. Siz…"},"o":[
+    {"t":{"en":"Ask for the missing details until it makes sense.","tr":"Anlamlı hale gelene kadar eksik detayları soruyorum."},"a":"S"},
+    {"t":{"en":"Wonder what they're really trying to say underneath.","tr":"Altında aslında ne söylemek istediklerini merak ediyorum."},"a":"N"},
+    {"t":{"en":"Note the specific things that don't line up.","tr":"Uyuşmayan spesifik şeyleri not ediyorum."},"a":"S"},
+    {"t":{"en":"Think about what the story says about them as a person.","tr":"Hikâyenin onlar hakkında bir kişi olarak ne söylediğini düşünüyorum."},"a":"N"}
+  ]},
+  {"q":{"en":"A friend is upset about something that, honestly, they caused. You…","tr":"Bir arkadaşınız, dürüst olmak gerekirse kendi sebep olduğu bir şeye üzülüyor. Siz…"},"o":[
+    {"t":{"en":"Help them see the pattern so it doesn't happen again.","tr":"Bir daha olmaması için kalıbı görmelerine yardım ediyorum."},"a":"T"},
+    {"t":{"en":"Let them vent first. Solutions can wait.","tr":"Önce içini dökmelerine izin veriyorum. Çözümler bekleyebilir."},"a":"F"},
+    {"t":{"en":"Say the honest thing, kindly, because they trust me.","tr":"Dürüst şeyi, nazikçe söylüyorum çünkü bana güveniyorlar."},"a":"T"},
+    {"t":{"en":"Ask how they're feeling before I say anything else.","tr":"Başka bir şey söylemeden önce nasıl hissettiklerini soruyorum."},"a":"F"}
+  ]},
+  {"q":{"en":"You're choosing between two good options. You decide by…","tr":"İki iyi seçenek arasında seçim yapıyorsunuz. Kararınızı…"},"o":[
+    {"t":{"en":"Listing pros and cons and weighing them honestly.","tr":"Artıları ve eksileri listeleyip dürüstçe tartarak veriyorum."},"a":"T"},
+    {"t":{"en":"Asking which one feels right in my gut.","tr":"Hangisinin içgüdüsel olarak doğru hissettirdiğini sorarak veriyorum."},"a":"F"},
+    {"t":{"en":"Asking which one is more consistent with my values.","tr":"Hangisinin değerlerimle daha tutarlı olduğunu sorarak veriyorum."},"a":"F"},
+    {"t":{"en":"Asking which one is more logical long-term.","tr":"Hangisinin uzun vadede daha mantıklı olduğunu sorarak veriyorum."},"a":"T"}
+  ]},
+  {"q":{"en":"Someone criticizes your work in front of others. Your first thought is…","tr":"Biri başkalarının önünde işinizi eleştiriyor. İlk düşünceniz…"},"o":[
+    {"t":{"en":"Is the criticism accurate? If yes, fine. If no, push back.","tr":"Eleştiri doğru mu? Doğruysa sorun yok. Değilse itiraz ederim."},"a":"T"},
+    {"t":{"en":"Why here? Why now? This could have been a private message.","tr":"Neden burada? Neden şimdi? Bu özel bir mesaj olabilirdi."},"a":"F"},
+    {"t":{"en":"Okay. What specifically needs to change?","tr":"Tamam. Tam olarak neyin değişmesi gerekiyor?"},"a":"T"},
+    {"t":{"en":"I need a minute. That stung more than I'll admit.","tr":"Bir dakikaya ihtiyacım var. Bu göründüğünden çok daha fazla dokundu."},"a":"F"}
+  ]},
+  {"q":{"en":"You're leading a team and someone is underperforming. You…","tr":"Bir ekibi yönetiyorsunuz ve biri beklenenin altında performans gösteriyor. Siz…"},"o":[
+    {"t":{"en":"Have a direct conversation about expectations and next steps.","tr":"Beklentiler ve sonraki adımlar hakkında doğrudan bir konuşma yapıyorum."},"a":"T"},
+    {"t":{"en":"Check in first. Something might be going on outside work.","tr":"Önce bir nabız yokluyorum. İş dışında bir şey olabilir."},"a":"F"},
+    {"t":{"en":"Document it and follow a clear process if it continues.","tr":"Kayda geçiriyorum ve devam ederse net bir süreç izliyorum."},"a":"T"},
+    {"t":{"en":"Ask what they need from me before I ask what they owe the team.","tr":"Takıma ne borçlu olduklarını sormadan önce benden neye ihtiyaçları olduğunu soruyorum."},"a":"F"}
+  ]},
+  {"q":{"en":"You're watching a film that ends ambiguously. You feel…","tr":"Belirsiz biten bir film izliyorsunuz. Kendinizi…"},"o":[
+    {"t":{"en":"Curious. I'll think about what the ending argued.","tr":"Meraklı hissediyorum. Finalin ne savunduğunu düşüneceğim."},"a":"T"},
+    {"t":{"en":"Moved. I'll sit with the feeling for a while.","tr":"Duygulanmış hissediyorum. Bir süre bu hisle oturacağım."},"a":"F"},
+    {"t":{"en":"Slightly annoyed. I wanted to know what actually happened.","tr":"Hafif sinirli hissediyorum. Gerçekte ne olduğunu bilmek istiyordum."},"a":"T"},
+    {"t":{"en":"Grateful. Ambiguity is closer to real life than tidy answers.","tr":"Minnettar hissediyorum. Belirsizlik, düzenli cevaplardan çok gerçek hayata daha yakın."},"a":"F"}
+  ]},
+  {"q":{"en":"Your ideal trip is…","tr":"İdeal geziniz…"},"o":[
+    {"t":{"en":"A plan, a schedule, and a backup plan for the schedule.","tr":"Bir plan, bir program ve program için bir yedek plan."},"a":"J"},
+    {"t":{"en":"A flight booked and nothing else. Figure it out there.","tr":"Bir uçuş bileti ve başka hiçbir şey. Orada hallederim."},"a":"P"},
+    {"t":{"en":"Loosely sketched, with room to change my mind.","tr":"Kabaca taslak halinde, fikrimi değiştirmeye yer bırakarak."},"a":"P"},
+    {"t":{"en":"Planned enough that nothing important can go wrong.","tr":"Önemli hiçbir şeyin ters gitmeyeceği kadar planlanmış."},"a":"J"}
+  ]},
+  {"q":{"en":"You're working on something with a deadline. You…","tr":"Son teslim tarihi olan bir iş üzerinde çalışıyorsunuz. Siz…"},"o":[
+    {"t":{"en":"Start early. Finish early. Then relax.","tr":"Erken başlıyorum. Erken bitiriyorum. Sonra rahatlıyorum."},"a":"J"},
+    {"t":{"en":"Do the best work close to the deadline, under pressure.","tr":"En iyi işi son teslim tarihine yakın, baskı altında yapıyorum."},"a":"P"},
+    {"t":{"en":"Break it into stages and hit each one.","tr":"Aşamalara bölüyorum ve her birini tamamlıyorum."},"a":"J"},
+    {"t":{"en":"Wait for the right burst of energy, then do it all at once.","tr":"Doğru enerji patlamasını bekliyorum, sonra hepsini bir kerede yapıyorum."},"a":"P"}
+  ]},
+  {"q":{"en":"A friend changes plans at the last minute. You…","tr":"Bir arkadaşınız son anda planları değiştiriyor. Siz…"},"o":[
+    {"t":{"en":"Adjust, but I was looking forward to the original plan.","tr":"Uyum sağlıyorum ama orijinal planı dört gözle bekliyordum."},"a":"J"},
+    {"t":{"en":"Love it. The new plan is probably better.","tr":"Bayılıyorum. Yeni plan muhtemelen daha iyi."},"a":"P"},
+    {"t":{"en":"Fine, but now I need to re-plan the rest of the day.","tr":"Tamam, ama şimdi günün geri kalanını yeniden planlamam lazım."},"a":"J"},
+    {"t":{"en":"Honestly? Plans are just suggestions anyway.","tr":"Dürüst olmak gerekirse? Planlar zaten sadece öneri."},"a":"P"}
+  ]},
+  {"q":{"en":"Your desk or workspace right now is…","tr":"Şu anda masanız ya da çalışma alanınız…"},"o":[
+    {"t":{"en":"Tidy enough that I could find anything in five seconds.","tr":"Beş saniyede herhangi bir şeyi bulabileceğim kadar düzenli."},"a":"J"},
+    {"t":{"en":"Organized chaos, but I know exactly where everything is.","tr":"Düzenli kaos, ama her şeyin nerede olduğunu tam olarak biliyorum."},"a":"P"},
+    {"t":{"en":"Clear, because I can't think in a mess.","tr":"Temiz, çünkü dağınıklıkta düşünemiyorum."},"a":"J"},
+    {"t":{"en":"A museum of half-finished projects. I love it here.","tr":"Yarım kalmış projeler müzesi. Burada olmayı seviyorum."},"a":"P"}
+  ]},
+  {"q":{"en":"You meet someone interesting. Your instinct is to…","tr":"İlginç biriyle tanıştınız. İçgüdünüz…"},"o":[
+    {"t":{"en":"Figure out when we can see each other again, concretely.","tr":"Somut olarak bir daha ne zaman görüşebileceğimizi belirlemek."},"a":"J"},
+    {"t":{"en":"Enjoy the moment. Let it become whatever it becomes.","tr":"Anın tadını çıkarmak. Neye dönüşürse dönüşsün."},"a":"P"},
+    {"t":{"en":"Suggest a specific plan for next week.","tr":"Gelecek hafta için spesifik bir plan önermek."},"a":"J"},
+    {"t":{"en":"Keep the conversation going and see where it lands.","tr":"Sohbeti sürdürmek ve nereye varacağını görmek."},"a":"P"}
+  ]}
+]

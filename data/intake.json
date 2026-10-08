@@ -1,0 +1,26 @@
+[
+  {
+    "q": {"en":"Which sibling are you in your family?","tr":"Ailenizde kaçıncı çocuksunuz?"},
+    "o": [
+      {"t":{"en":"First and only child","tr":"İlk ve tek çocuk"},"p":"capricorn","s":"virgo"},
+      {"t":{"en":"First of two siblings","tr":"İki kardeşin ilki"},"p":"leo","s":"capricorn"},
+      {"t":{"en":"Second of two siblings","tr":"İki kardeşin ikincisi"},"p":"libra","s":"pisces"},
+      {"t":{"en":"First child of three or more siblings","tr":"Üç veya daha fazla kardeşin ilk çocuğu"},"p":"aries","s":"capricorn"},
+      {"t":{"en":"Second child of three or more siblings","tr":"Üç veya daha fazla kardeşin ikinci çocuğu"},"p":"gemini","s":"libra"},
+      {"t":{"en":"Any child in the middle of four or more siblings","tr":"Dört veya daha fazla kardeşin ortasındaki çocuk"},"p":"aquarius","s":"libra"},
+      {"t":{"en":"The last child of three or more siblings","tr":"Üç veya daha fazla kardeşin en küçük çocuğu"},"p":"sagittarius","s":"gemini"}
+    ]
+  },
+  {
+    "q": {"en":"Who knows you best in the world, compared to everyone else?","tr":"Dünyada sizi en iyi tanıyan kim?"},
+    "o": [
+      {"t":{"en":"My parents, or one of my parents","tr":"Annem babam ya da biri"},"p":"cancer","s":"taurus"},
+      {"t":{"en":"One of my siblings","tr":"Kardeşlerimden biri"},"p":"gemini","s":"aries"},
+      {"t":{"en":"My friend or friends","tr":"Arkadaşım ya da arkadaşlarım"},"p":"leo","s":"libra"},
+      {"t":{"en":"My colleagues","tr":"İş arkadaşlarım"},"p":"capricorn","s":"virgo"},
+      {"t":{"en":"My therapist or psychologist","tr":"Terapistim ya da psikoloğum"},"p":"aquarius","s":"virgo"},
+      {"t":{"en":"Nobody but me","tr":"Benden başka kimse"},"p":"scorpio","s":"aquarius"},
+      {"t":{"en":"I'm not sure, or I don't know","tr":"Emin değilim ya da bilmiyorum"},"p":"pisces","s":"libra"}
+    ]
+  }
+]
