@@ -1,0 +1,134 @@
+{
+  "aries": {
+    "name": {"en":"Aries","tr":"Koç"}, "glyph":"♈",
+    "dates": {"en":"Mar 21 – Apr 19","tr":"21 Mar – 19 Nis"},
+    "traits": {"en":["Impulsive","Brave","Terrible at queues"],"tr":["Dürtüsel","Cesur","Sıra bekleyemez"]},
+    "verdict": {
+      "en":"You are a golden retriever in human form who has never once read the room before charging into it. Your spirit animal is the shopping cart with one broken wheel: unstoppable, slightly dangerous, occasionally airborne. You've started three hobbies this week and abandoned two of them before lunch.",
+      "tr":"İnsan formuna bürünmüş bir golden retriever'sınız ve odayı okumadan içine dalmayı bir kez olsun akıl etmediniz. Ruh hayvanınız tek tekerleği kırık bir alışveriş arabası: durdurulamaz, biraz tehlikeli, ara sıra havada. Bu hafta üç hobiye başladınız, ikisini öğle yemeğinden önce bıraktınız."
+    },
+    "match": {"en":"Sagittarius (co-conspirators) or Leo (mutual hype squad)","tr":"Yay (suç ortakları) ya da Aslan (karşılıklı moral ekibi)"},
+    "shadow": {"en":"Your shadow side treats patience like a personal insult.","tr":"Gölge yönünüz sabrı kişisel bir hakaret gibi görüyor."}
+  },
+  "taurus": {
+    "name": {"en":"Taurus","tr":"Boğa"}, "glyph":"♉",
+    "dates": {"en":"Apr 20 – May 20","tr":"20 Nis – 20 May"},
+    "traits": {"en":["Loyal","Deliciously stubborn","Ruthless about snacks"],"tr":["Sadık","Tatlı bir inatçı","Atıştırmalıkta acımasız"]},
+    "verdict": {
+      "en":"You have the emotional volatility of a very comfortable armchair, and honestly? Respect. You will forgive almost anything except someone eating the last of something without asking. Your love language is feeding people and quietly judging their life choices while doing it.",
+      "tr":"Duygusal dalgalanmanız son derece rahat bir koltuk kadar. Dürüst olmak gerekirse? Saygı duyuyorum. Neredeyse her şeyi affedersiniz; birinin sormadan son lokmayı yemesini asla. Sevgi diliniz insanları doyurmak ve bunu yaparken hayat seçimlerini sessizce yargılamak."
+    },
+    "match": {"en":"Virgo (shared standards) or Cancer (soft landing)","tr":"Başak (ortak standartlar) ya da Yengeç (yumuşak iniş)"},
+    "shadow": {"en":"Your shadow side calls it 'consistency' when it's really a drawbridge.","tr":"Gölge yönünüz buna 'istikrar' diyor, oysa aslında bir asma köprü."}
+  },
+  "gemini": {
+    "name": {"en":"Gemini","tr":"İkizler"}, "glyph":"♊",
+    "dates": {"en":"May 21 – Jun 20","tr":"21 May – 20 Haz"},
+    "traits": {"en":["Quick-witted","Chaotic","Three tabs deep"],"tr":["Hazırcevap","Kaotik","Üç sekme derin"]},
+    "verdict": {
+      "en":"You contain multitudes, most of which contradict each other before breakfast. You've had six personalities today and none of them signed a waiver. Your attention span is a browser with 47 tabs open, one playing music you cannot locate, and you refuse to close any of them.",
+      "tr":"İçinizde çokluklar barındırıyorsunuz; çoğu kahvaltıdan önce birbirleriyle çelişiyor. Bugün altı farklı kişilik oldunuz ve hiçbiri sorumluluk sözleşmesi imzalamadı. Dikkat süreniz 47 sekmesi açık bir tarayıcı; biri yerini bulamadığınız bir müzik çalıyor ve hiçbirini kapatmayı reddediyorsunuz."
+    },
+    "match": {"en":"Libra (banter partners) or Aquarius (nobody bats an eye)","tr":"Terazi (atışma ortağı) ya da Kova (kimse yadırgamaz)"},
+    "shadow": {"en":"Your shadow side RSVPs yes and then sends a hologram.","tr":"Gölge yönünüz 'evet' der, sonra yerine bir hologram gönderir."}
+  },
+  "cancer": {
+    "name": {"en":"Cancer","tr":"Yengeç"}, "glyph":"♋",
+    "dates": {"en":"Jun 21 – Jul 22","tr":"21 Haz – 22 Tem"},
+    "traits": {"en":["Fiercely loyal","Emotional archive","Soft shell"],"tr":["Fena sadık","Duygusal arşiv","Yumuşak kabuk"]},
+    "verdict": {
+      "en":"You are a crab wearing a cardigan: soft inside, armored outside, and willing to pinch anyone who upsets your people. You remember what someone said to you in 2014, in a hallway, and yes, you have thought about it this week. Group chats fear your screenshot habit.",
+      "tr":"Hırka giymiş bir yengeçsiniz: içi yumuşak, dışı zırhlı ve sevdiklerinizi üzen herkesi çimdiklemeye hazır. Birinin 2014'te bir koridorda size söylediğini hatırlıyorsunuz ve evet, bu hafta onu düşündünüz. Grup sohbetleri ekran görüntüsü alışkanlığınızdan korkuyor."
+    },
+    "match": {"en":"Pisces (feelings understood) or Taurus (someone to fold the laundry)","tr":"Balık (duygular anlaşılır) ya da Boğa (çamaşırı katlayacak biri)"},
+    "shadow": {"en":"Your shadow side builds a moat and then wonders why nobody visits.","tr":"Gölge yönünüz bir hendek kazıyor, sonra kimse neden gelmiyor diye merak ediyor."}
+  },
+  "leo": {
+    "name": {"en":"Leo","tr":"Aslan"}, "glyph":"♌",
+    "dates": {"en":"Jul 23 – Aug 22","tr":"23 Tem – 22 Ağu"},
+    "traits": {"en":["Radiant","Main character","Generous tyrant"],"tr":["Işıltılı","Başrol","Cömert tiran"]},
+    "verdict": {
+      "en":"You don't enter rooms, you are cast into them. Your group chat exists because you started it, and you also decide where everyone eats — loudly, democratically, in your favor. Beneath the spotlight is a person who remembers everyone's birthday and buys the best gifts.",
+      "tr":"Odalara girmezsiniz, odaya atanırsınız. Grup sohbetiniz var çünkü onu siz başlattınız ve herkesin nerede yiyeceğine de siz karar veriyorsunuz — yüksek sesle, demokratik bir şekilde, kendi lehinize. Spot ışığının altında herkesin doğum gününü hatırlayan ve en iyi hediyeleri alan biri var."
+    },
+    "match": {"en":"Aries (mutual hype squad) or Sagittarius (double feature)","tr":"Koç (karşılıklı moral ekibi) ya da Yay (çifte gösterim)"},
+    "shadow": {"en":"Your shadow side needs a witness for its own generosity.","tr":"Gölge yönünüz kendi cömertliğine bir tanık arıyor."}
+  },
+  "virgo": {
+    "name": {"en":"Virgo","tr":"Başak"}, "glyph":"♍",
+    "dates": {"en":"Aug 23 – Sep 22","tr":"23 Ağu – 22 Eyl"},
+    "traits": {"en":["Precise","Quietly superior","Secretly funny"],"tr":["Kesin","Sessizce üstün","Gizlice komik"]},
+    "verdict": {
+      "en":"You have a system for your systems, and you've mentally reorganized this quiz while answering it. Your love language is fixing things nobody knew were broken. You're not judgmental — you just notice everything and, tragically, can articulate it.",
+      "tr":"Sistemlerinizin bile bir sistemi var ve siz bu testi yanıtlarken zihninizde yeniden düzenlediniz. Sevgi diliniz kimsenin bozuk olduğunu bilmediği şeyleri tamir etmek. Yargılayıcı değilsiniz — sadece her şeyi fark ediyorsunuz ve ne yazık ki bunu dile getirebiliyorsunuz."
+    },
+    "match": {"en":"Taurus (peaceful) or Capricorn (efficiency twins)","tr":"Boğa (huzurlu) ya da Oğlak (verimlilik ikizleri)"},
+    "shadow": {"en":"Your shadow side edits other people's texts in its head.","tr":"Gölge yönünüz başkalarının mesajlarını kafasında düzeltiyor."}
+  },
+  "libra": {
+    "name": {"en":"Libra","tr":"Terazi"}, "glyph":"♎",
+    "dates": {"en":"Sep 23 – Oct 22","tr":"23 Eyl – 22 Eki"},
+    "traits": {"en":["Charming","Conflict-averse","Cannot pick a restaurant"],"tr":["Çekici","Çatışmadan kaçan","Restoran seçemez"]},
+    "verdict": {
+      "en":"You would rather be wrong together than right alone. You've been 'fine, whatever you want' since birth, and inside there is a small librarian screaming about font choices. Everyone tells you their secrets because you look like a warm lamp that listens.",
+      "tr":"Birlikte yanılmak, tek başına haklı olmaktan iyidir sizin için. Doğduğunuzdan beri 'iyiyim, sen ne istersen' diyorsunuz ve içeride küçük bir kütüphaneci font seçimleri için çığlık atıyor. Herkes size sırlarını anlatıyor çünkü siz dinleyen sıcak bir lamba gibi görünüyorsunuz."
+    },
+    "match": {"en":"Gemini (endless conversation) or Aquarius (opposites, politely)","tr":"İkizler (bitmeyen sohbet) ya da Kova (kibar zıtlıklar)"},
+    "shadow": {"en":"Your shadow side keeps the peace by abandoning the self.","tr":"Gölge yönünüz huzuru kendinden vazgeçerek koruyor."}
+  },
+  "scorpio": {
+    "name": {"en":"Scorpio","tr":"Akrep"}, "glyph":"♏",
+    "dates": {"en":"Oct 23 – Nov 21","tr":"23 Eki – 21 Kas"},
+    "traits": {"en":["Intense","Unforgetting","Weirdly magnetic"],"tr":["Yoğun","Unutmayan","Tuhaf biçimde mıknatıslı"]},
+    "verdict": {
+      "en":"You answer a question with a question, and somehow you're the one being interviewed afterward. People tell you things they've never told anyone, within eleven minutes of meeting you. You do not hold grudges — you hold files, indexed and backed up to the cloud.",
+      "tr":"Bir soruya soruyla karşılık veriyorsunuz ve sonunda röportaj yapılan siz oluyorsunuz. İnsanlar sizinle tanıştıktan on bir dakika sonra kimseye söylemedikleri şeyleri anlatıyorlar. Kin tutmuyorsunuz — dosya tutuyorsunuz; indekslenmiş ve buluta yedeklenmiş."
+    },
+    "match": {"en":"Cancer (ride or die) or Pisces (deep end together)","tr":"Yengeç (sonuna kadar) ya da Balık (birlikte derin sulara)"},
+    "shadow": {"en":"Your shadow side forgives but never deletes the folder.","tr":"Gölge yönünüz affediyor ama klasörü asla silmiyor."}
+  },
+  "sagittarius": {
+    "name": {"en":"Sagittarius","tr":"Yay"}, "glyph":"♐",
+    "dates": {"en":"Nov 22 – Dec 21","tr":"22 Kas – 21 Ara"},
+    "traits": {"en":["Blunt","Restless","Funnily unhinged"],"tr":["Açık sözlü","Huzursuz","Komik derecede kaçık"]},
+    "verdict": {
+      "en":"You said the thing out loud. In a meeting. On purpose. Your passport has more personality than most people's resumes, and your plan is 'vibes and a departure time.' You give terrible advice with absolute confidence, and, weirdly, it works.",
+      "tr":"O şeyi yüksek sesle söylediniz. Bir toplantıda. Bilerek. Pasaportunuz çoğu insanın özgeçmişinden daha fazla kişiliğe sahip ve planınız 'hissiyat ve bir kalkış saati.' Berbat tavsiyeleri mutlak bir özgüvenle veriyorsunuz ve tuhaf biçimde işe yarıyor."
+    },
+    "match": {"en":"Aries (adventure cult) or Leo (standing ovation included)","tr":"Koç (maceracı tarikat) ya da Aslan (ayakta alkış dahil)"},
+    "shadow": {"en":"Your shadow side calls it honesty when it's really a confetti cannon.","tr":"Gölge yönünüz buna dürüstlük diyor, oysa aslında bir konfeti topu."}
+  },
+  "capricorn": {
+    "name": {"en":"Capricorn","tr":"Oğlak"}, "glyph":"♑",
+    "dates": {"en":"Dec 22 – Jan 19","tr":"22 Ara – 19 Oca"},
+    "traits": {"en":["Ambitious","Dry as parchment","Old soul"],"tr":["Hırslı","Parşömen kadar kuru","Yaşlı ruh"]},
+    "verdict": {
+      "en":"You were 12 going on 45, and now you're 45 going on mildly relaxed. Fun isn't banned, it's just scheduled — Sunday, 4–6pm, weather permitting. You show love by handling logistics nobody else wanted, then acting like it was nothing.",
+      "tr":"12 yaşındayken 45 gibiydiniz, şimdi 45 yaşındasınız ve hafifçe gevşemiş bir 45 gibi. Eğlence yasak değil, sadece planlı — Pazar, 16:00–18:00, hava müsaitse. Kimsenin üstlenmek istemediği lojistiği hallederek sevgi gösteriyor, sonra hiçbir şey değilmiş gibi davranıyorsunuz."
+    },
+    "match": {"en":"Virgo (silent understanding) or Taurus (earned comfort)","tr":"Başak (sessiz anlayış) ya da Boğa (hak edilmiş konfor)"},
+    "shadow": {"en":"Your shadow side calls it discipline when it's really a locked door.","tr":"Gölge yönünüz buna disiplin diyor, oysa aslında kilitli bir kapı."}
+  },
+  "aquarius": {
+    "name": {"en":"Aquarius","tr":"Kova"}, "glyph":"♒",
+    "dates": {"en":"Jan 20 – Feb 18","tr":"20 Oca – 18 Şub"},
+    "traits": {"en":["Original","Alien energy","Principled gremlin"],"tr":["Özgün","Uzaylı enerjisi","İlkeli gremlin"]},
+    "verdict": {
+      "en":"You have opinions about pigeons and you will share them. You're the friend who goes quiet, then says something so strange and brilliant the table goes still. You care about humanity in bulk and get awkward with individual humans, which is its own kind of poetry.",
+      "tr":"Güvercinler hakkında fikirleriniz var ve bunları paylaşacaksınız. Sessizleşen, sonra o kadar tuhaf ve parlak bir şey söyleyen arkadaşsınız ki masa bir an duruyor. İnsanlığı toptan önemsiyorsunuz ve tek tek insanlarla garipleşiyorsunuz; bu da başlı başına bir şiir."
+    },
+    "match": {"en":"Gemini (brain-meld) or Libra (opposites, politely)","tr":"İkizler (zihin birleşmesi) ya da Terazi (kibar zıtlıklar)"},
+    "shadow": {"en":"Your shadow side loves humanity but forgets to text back a human.","tr":"Gölge yönünüz insanlığı seviyor ama bir insana geri yazmayı unutuyor."}
+  },
+  "pisces": {
+    "name": {"en":"Pisces","tr":"Balık"}, "glyph":"♓",
+    "dates": {"en":"Feb 19 – Mar 20","tr":"19 Şub – 20 Mar"},
+    "traits": {"en":["Dreamy","Empathic","Chronically late"],"tr":["Hayalperest","Empatik","Kronik geç"]},
+    "verdict": {
+      "en":"You cried at a commercial for insurance. You apologize to furniture you bump into. You have three imaginary soundtracks playing during ordinary errands, and you're the main character in all of them. Somehow, impossibly, people feel safer around you.",
+      "tr":"Bir sigorta reklamına ağladınız. Çarptığınız mobilyalardan özür diliyorsunuz. Sıradan işleriniz sırasında kafanızda üç hayali film müziği çalıyor ve hepsinde başrol sizsiniz. Bir şekilde, imkânsız gibi görünse de, insanlar yanınızda kendini daha güvende hissediyor."
+    },
+    "match": {"en":"Cancer (twin tide) or Scorpio (deep end together)","tr":"Yengeç (ikiz gelgit) ya da Akrep (birlikte derin sulara)"},
+    "shadow": {"en":"Your shadow side dissolves instead of deciding.","tr":"Gölge yönünüz karar vermek yerine çözülüp gidiyor."}
+  }
+}
